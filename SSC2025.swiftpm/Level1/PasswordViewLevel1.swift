@@ -17,22 +17,21 @@ struct PasswordViewLevel1: View {
        
           
                 VStack(spacing:25){
-                    RoundedRectangle(cornerRadius: 15)
-                        .frame(width: 50,height: 50)
-                        .foregroundStyle(Color.white)
-                        .opacity(0.8)
-                        .overlay {
-                            if enteredPassword != password {
-                                Image(systemName: "lock.fill")
-                                    .font(Font.system(size: 25))
-                                    .bold()
-                            }else{
-                                Image(systemName: "lock.open.fill")
-                                    .font(Font.system(size: 25))
-                                    .bold()
-                                  
-                            }
-                        }
+                    Image(.keynote)
+                          .resizable()
+                          .scaledToFit()
+                          
+                          .frame(width: 80,height: 80)
+                          .opacity(enteredPassword != password ? 0.7 : 1)
+                          .overlay {
+                              if enteredPassword != password {
+                                  Image(systemName: "lock.fill")
+                                      .font(Font.system(size: 25))
+                                      .bold()
+                                      .foregroundStyle(.white)
+                              }
+                          }
+                   
                     VStack(spacing:5){
                         Text("Keynote is \( enteredPassword == password ? "Unlocked":"Locked")")
                             .font(.system(size: 20, weight: .black, design: .monospaced))
