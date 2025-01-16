@@ -88,10 +88,19 @@ struct MessageBubble: View {
         }
                     .padding(10)
                     .padding(.horizontal,5)
-                    .background(
-                        BubbleShape(myMessage: !self.message.isIncoming)
-                        .fill(message.messageStyle == .congratulations ? .pink: message.isIncoming ? Color.init(uiColor: .systemGray4):  Color.blue))
-                    .shadow(color: .red,radius: message.messageStyle == .congratulations ? 5 : 0)
+                    .background{
+                        if self.message.messageStyle != .congratulations{
+                            BubbleShape(myMessage: !self.message.isIncoming)
+                                .fill( message.isIncoming ? Color.init(uiColor: .systemGray4):  Color.blue)
+                            
+                        }else{
+                            BubbleShape(myMessage: !self.message.isIncoming)
+                                .fill(.pink)
+                                .shadow(color:.red,radius:5)
+                        }
+                        
+                    }
+                    
                     .frame(maxWidth:sizeOFScreen.width / 2.2,alignment: message.isIncoming ? .leading: .trailing)
                     .onTapGesture{
                         self.message.onTap?()
