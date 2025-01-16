@@ -20,6 +20,7 @@ struct DesktopItemsView: View {
                             self.data.openWindow(.level1)
                         }else{
                             // show mock keynote
+                            self.data.openWindow(.mockKeynote)
                         }
                     }label:{
                         item(text: "Keynote", image: Image("keynote"),isLocked:self.data.gameSteps.rawValue < 2)
@@ -46,9 +47,9 @@ struct DesktopItemsView: View {
                 }
                 if self.data.gameSteps.rawValue >= GameSteps.usersFolder.rawValue{
                     Button{
-                        if self.data.gameSteps == .usersFolder{
+                        
                             self.data.openWindow(.usersFolder)
-                        }
+                        
                     }label:{
                         item(text: "Users Folder", image: Image("folder"))
                     }

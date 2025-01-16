@@ -39,6 +39,8 @@ struct Level1View: View {
                         PasswordViewLevel1(size:size){
                             self.level1Data.sentTheMessage = true
                             finished()
+                            self.data.closeWindow(.level1)
+                            self.data.openWindow(.mockKeynote)
                         }
                     }
                 }else{

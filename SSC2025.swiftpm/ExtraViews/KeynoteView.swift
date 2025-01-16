@@ -13,11 +13,15 @@ enum KeynoteSteps: Int, CaseIterable{
 }
 
 struct KeynoteView: View {
+    let size:CGSize
     @State private var isRevealed = false
     @State private var selectedStep: Int = 0
     
     @State private var scale: CGFloat = 1
     @State private var lastScale: CGFloat = 1
+    
+    var swipe:(()->Void)?
+    var close:(()->Void)?
     var body: some View {
         GeometryReader{ geo in
             let size = geo.size
@@ -102,6 +106,11 @@ struct KeynoteView: View {
                 }
             
         }
+        .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.3,height: size.height / 1.5), title: "Keynote", movable: true,swipe: {
+            swipe?()
+        },close:{
+            close?()
+        }))
         
     }
         
@@ -142,12 +151,8 @@ struct KeynoteView: View {
 
 #Preview {
     let size = UIScreen.main.bounds.size
-    KeynoteView()
-        .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.3,height: size.height / 1.5), title: "Keynote", movable: true,swipe: {
-           
-        },close:{
-         
-        }))
+    KeynoteView(size: size)
+       
         
 }
 

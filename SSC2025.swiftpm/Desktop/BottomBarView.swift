@@ -17,31 +17,46 @@ struct BottomBarView: View {
                 let windows = data.dockWindows
                 ForEach(windows,id:\.self){window in
                     let showCircle = self.data.isWindowOpen(window)
-                    Button{
-                        withAnimation{
-                            self.data.openWindow(window)
-                        }
-                    }label:{
+                   
                         
                         switch window{
                         case .level1:
-                            appIconView(image: Image(.keynote), showCircle: showCircle)
+                            windowButton(window:window){
+                                appIconView(image: Image(.keynote), showCircle: showCircle)
+                            }
                         case .messages:
-                            appIconView(image: Image(.messagesLogo), showCircle: showCircle)
+                            windowButton(window:window){
+                                appIconView(image: Image(.messagesLogo), showCircle: showCircle)
+                            }
                         case .level2:
-                            appIconView(image: Image(.morseTool), showCircle: showCircle)
+                            windowButton(window:window){
+                                appIconView(image: Image(.morseTool), showCircle: showCircle)
+                            }
                         case .level3:
-                            appIconView(image: Image(.terminal), showCircle: showCircle)
+                            windowButton(window:window){
+                                appIconView(image: Image(.terminal), showCircle: showCircle)
+                            }
                         case .level4Browser:
-                            appIconView(image: Image(systemName: "safari"), showCircle: showCircle)
+                            windowButton(window:window){
+                                appIconView(image: Image(systemName: "safari"), showCircle: showCircle)
+                            }
                         case .level4Decoder:
-                            appIconView(image: Image(systemName: "wifi.slash"), showCircle: showCircle)
-                            
+                            windowButton(window:window){
+                                appIconView(image: Image(systemName: "wifi.slash"), showCircle: showCircle)
+                            }
+                        case .mockKeynote:
+                            windowButton(window:window){
+                                appIconView(image: Image(.keynote), showCircle: showCircle)
+                            }
+                        case .mockAttendeeDatabase:
+                            windowButton(window:window){
+                                appIconView(image: Image(systemName: "text.document"), showCircle: showCircle)
+                            }
                         default:
                             EmptyView()
                             
                         }
-                    }
+                    
                    
                    
                     
@@ -64,15 +79,31 @@ struct BottomBarView: View {
             
            
         }
+    
        
     }
+    func windowButton(window: WindowType, label: @escaping () -> some View) -> some View {
+        
+        
+        // Skip creating button for default case
+        return AnyView(
+            Button(action: {
+                
+                self.data.openWindow(window)
+                
+            }) {
+                label()
+            }
+        )
+    }
+            
     func appIconView(image:Image,showCircle:Bool)->some View{
         
         VStack{
             image
                 .resizable()
                 .scaledToFit()
-         
+                .foregroundStyle(.white)
                 
                 Circle()
                     .foregroundStyle(Color.white)

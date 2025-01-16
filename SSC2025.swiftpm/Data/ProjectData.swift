@@ -146,6 +146,7 @@ Each file you decrypt unlocks the next step in the rescue. Don’t worry—I’l
             let message1 = MessageViewStruct(text: text1, isIncoming: false)
             let message2 = MessageViewStruct(text: "Keynote", isIncoming: false,messageStyle:.file(Image("keynote"),"Keynote Document - 219 KB"),onTap: {
                 // open keynote showing file
+                self.openWindow(.mockKeynote)
              })
            
             let message3 = MessageViewStruct(text: "Great job unlocking the keynote! We’re one step closer to saving WWDC.", isIncoming: true)
@@ -178,6 +179,7 @@ Navigate to the Users Folder on the desktop. Once there, open the attendee file.
         case .level3:
           let message1 = MessageViewStruct(text: "Attendee Database", isIncoming: false,messageStyle:.file(Image(systemName: "text.document.fill"),"Attendee Database.txt - 100 KB"),onTap: {
               // open attendee database showing file
+              self.openWindow(.mockAttendeeDatabase)
           })
             let text1 = "I’ve sent the attendee list. Are we good to go?"
           let message2 = MessageViewStruct(text: text1, isIncoming: false)
@@ -270,4 +272,6 @@ enum WindowType: Int, Equatable ,CaseIterable{
     case level4Wifi
     case level4Decoder
     case aboutMac
+    case mockKeynote
+    case mockAttendeeDatabase
 }

@@ -127,6 +127,26 @@ struct DesktopView: View {
                                     .onTapGesture {
                                         data.bringToFront(.aboutMac)
                                     }
+                            case .mockAttendeeDatabase:
+                                AttendeeDatabaseView(size: size,swipe:{
+                                    self.data.swipeWindow(.mockAttendeeDatabase)
+                                },close:{
+                                    self.data.closeWindow(.mockAttendeeDatabase)
+                                })
+                                .zIndex(Double(data.openWindows.firstIndex(of: .mockAttendeeDatabase) ?? 0))
+                                .onTapGesture {
+                                    data.bringToFront(.mockAttendeeDatabase)
+                                }
+                            case .mockKeynote:
+                                KeynoteView(size: size,swipe:{
+                                    self.data.swipeWindow(.mockKeynote)
+                                },close:{
+                                    self.data.closeWindow(.mockKeynote)
+                                })
+                                .zIndex(Double(data.openWindows.firstIndex(of: .mockKeynote) ?? 0))
+                                .onTapGesture {
+                                    data.bringToFront(.mockKeynote)
+                                }
                             default:
                                 EmptyView()
                             }
