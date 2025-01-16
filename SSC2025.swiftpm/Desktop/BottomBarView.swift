@@ -29,7 +29,7 @@ struct BottomBarView: View {
                         case .messages:
                             appIconView(image: Image(.messagesLogo), showCircle: showCircle)
                         case .level2:
-                            appIconView(image: Image(.robot), showCircle: showCircle)
+                            appIconView(image: Image(.morseTool), showCircle: showCircle)
                         case .level3:
                             appIconView(image: Image(.terminal), showCircle: showCircle)
                         case .level4Browser:

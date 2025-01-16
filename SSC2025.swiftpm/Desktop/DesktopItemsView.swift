@@ -31,7 +31,7 @@ struct DesktopItemsView: View {
                         self.data.openWindow(.level2)
                         
                     }label:{
-                        item(text: "MorseCode.tool", image: Image("robot"))
+                        item(text: "MorseCode.tool", image: Image(.morseTool))
                     }
                 }
                     
