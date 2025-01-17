@@ -60,6 +60,8 @@ struct MacToolbar: View {
                         .disabled(true)
                     }
                     Spacer()
+                    Image(systemName: "battery.100percent")
+                        .foregroundStyle(.white, .secondary)
                     Button{
                         if self.data.gameSteps == .noWifi{
                             self.data.openWindow(.level4Wifi)
