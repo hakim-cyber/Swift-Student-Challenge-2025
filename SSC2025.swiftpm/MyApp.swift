@@ -12,7 +12,7 @@ struct MyApp: App {
         WindowGroup {
            
                 ZStack{
-                    DesktopView()
+                    StartView()
                         .preferredColorScheme(.dark)
                         .environmentObject(projectData)
                         .environmentObject(level4Data)

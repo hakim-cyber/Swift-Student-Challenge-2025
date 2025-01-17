@@ -14,7 +14,7 @@ class ProjectData: ObservableObject {
     
     @Published  var userName: String = ""
     @Published var startSteps : StartSteps = .helloView
-    @Published var gameSteps : GameSteps = .watchedAnimation{
+    @Published var gameSteps : GameSteps = .openMessagesApp{
         didSet {
             handleStepsChange()
         }
@@ -45,7 +45,7 @@ class ProjectData: ObservableObject {
     
     @Published var messageQueue: [MessageViewStruct] = []
     private var timer: Timer?
-    private var typingSpeed: TimeInterval = 0.03
+    private var typingSpeed: TimeInterval = 0.01
    
     
     // Time per character
