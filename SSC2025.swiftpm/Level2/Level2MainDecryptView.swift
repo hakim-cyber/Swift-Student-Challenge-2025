@@ -18,7 +18,7 @@ struct Level2MainDecryptView: View {
     @State var rows:[[CharacterStruct]] = []
     
     @State private var animateWrongText = false
-    @State private var showHint = false
+    @State private var showHint = true
     
     @State private var draggingCharacter:CharacterStruct?
     
@@ -398,91 +398,53 @@ struct Level2MainDecryptView: View {
     @ViewBuilder
     func instructionsView()->some View{
         
-            VStack{
-                VStack(alignment: .leading, spacing: 20) {
-                           Text("🎉 Mission Success! 🎉")
-                               .font(.largeTitle.bold())
-                               .foregroundColor(.cyan)
-                               .multilineTextAlignment(.center)
-                    Group{
-                        Text("You've decoded the word: ")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                        + Text(" 'USERS FOLDER'")
-                            .font(.title2.bold())
-                            .foregroundColor(.cyan)
-                    }
-                    .fontWeight(.black)
-                           
-                           Text("Here’s your next mission:")
-                               .font(.headline)
-                               .foregroundColor(.yellow)
-                               .padding(.top)
-                               .fontWeight(.black)
-                           VStack(alignment: .leading, spacing: 10) {
-                               HStack(alignment: .top) {
-                                   Text("1.")
-                                       
-                                       .foregroundColor(.orange)
-                                   Text("Close this window immediately to stay ahead of the hackers.")
-                                       .foregroundColor(.white)
-                                       
-                               }
-                               
-                               HStack(alignment: .top) {
-                                   Text("2.")
-                                       
-                                       .foregroundColor(.orange)
-                                   Text("Navigate to the **Users Folder** on the desktop.")
-                                       .foregroundColor(.white)
-                                       
-                               }
-                               
-                               HStack(alignment: .top) {
-                                   Text("3.")
-                                      
-                                       .foregroundColor(.orange)
-                                   Text("Inside the folder, locate the **attendee database file**.")
-                                       .foregroundColor(.white)
-                                       
-                               }
-                               
-                               HStack(alignment: .top) {
-                                   Text("4.")
-                                       
-                                       .foregroundColor(.orange)
-                                   Text("Use the password from Level 1 (**5FC@WWDC**) to unlock the file.")
-                                       .foregroundColor(.white)
-                                       
-                               }
-                               
-                               HStack(alignment: .top) {
-                                   Text("5.")
-                                       
-                                       .foregroundColor(.orange)
-                                   Text("Send the attendee database securely to Steve Jobs’ virtual assistant.")
-                                       .foregroundColor(.white)
-                                       
-                               }
-                           }
-                           .padding(.leading, 10)
-                           .fontWeight(.heavy)
-                           .font(.system(size: 20))
-                           Text("⚡ WWDC is counting on you—good luck, Cipher Master!")
-                               .font(.title.bold())
-                               .foregroundColor(.yellow)
-                               .multilineTextAlignment(.center)
-                               .padding(.top)
-                               .particleEffect(systemImage: "star.fill", font: .largeTitle, status: showInstructions , activeTint: .yellow, inactiveTint: .secondary)
-                       }
-                       .padding()
-                      
-                       
+        VStack {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("🎉 Mission Success! 🎉")
+                    .font(.largeTitle.bold())
+                    .foregroundColor(.cyan)
+                    .multilineTextAlignment(.center)
+                
+                Group {
+                    Text("You've decoded: ")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                    + Text("'USERS FOLDER'")
+                        .font(.title2.bold())
+                        .foregroundColor(.cyan)
+                }
+                
+                Text("Next Mission:")
+                    .font(.headline)
+                    .foregroundColor(.yellow)
+                    .padding(.top)
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("1. Close this window to stay ahead of the hackers.")
+                        .foregroundColor(.white)
+                    Text("2. Open the **Users Folder** on the desktop.")
+                        .foregroundColor(.white)
+                    Text("3. Locate the **attendee database file**.")
+                        .foregroundColor(.white)
+                    Text("4. Use the password from Level 1 (**5FC@WWDC**) to unlock it.")
+                        .foregroundColor(.white)
+                    Text("5. Send the file to Steve Jobs’ assistant.")
+                        .foregroundColor(.white)
+                }
+                .padding(.leading, 10)
+                .font(.system(size: 18, weight: .medium))
+                
+                Text("⚡ WWDC is counting on you—good luck!")
+                    .font(.title.bold())
+                    .foregroundColor(.yellow)
+                    .multilineTextAlignment(.center)
+                    .padding(.top)
+                    .particleEffect(systemImage: "star.fill", font: .largeTitle, status: showInstructions, activeTint: .yellow, inactiveTint: .secondary)
             }
-         
-                .frame(width: size.width,height: size.height)
-                .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .center)
-            
+            .padding()
+        }
+        .frame(width: size.width, height: size.height)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         
     }
 }

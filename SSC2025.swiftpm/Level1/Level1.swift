@@ -40,7 +40,7 @@ struct Level1View: View {
                             self.level1Data.sentTheMessage = true
                             finished()
                             self.data.closeWindow(.level1)
-                            self.data.openWindow(.mockKeynote)
+                           
                         }
                     }
                 }else{

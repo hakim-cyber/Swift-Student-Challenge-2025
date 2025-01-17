@@ -28,8 +28,8 @@ struct ShiningEffect:ViewModifier {
         if shine{
             content
                 .foregroundColor(systemColor)
-                .shadow(color: shadowColor, radius: glow ? 10 : 2) // Glow effect
-                .scaleEffect(glow ? 1.05 : 1) // Slightly grow/shrink text
+                .shadow(color: shadowColor, radius: glow ? 10 : 5) // Glow effect
+                .scaleEffect(glow ? 1.2 : 1) // Slightly grow/shrink text
                 .animation(
                     Animation.easeInOut(duration: 1) // Smooth animation
                         .repeatForever(autoreverses: true),

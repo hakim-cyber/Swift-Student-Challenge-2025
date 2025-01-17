@@ -123,19 +123,10 @@ class ProjectData: ObservableObject {
         case .openMessagesApp:
            print("opened Messages")
         case .level1:
-            let text1 = """
-Hey there! Steve Jobs had a feeling you’d be the one to save us.
-
-Hackers have locked the WWDC keynote, the attendee list, and even Apple’s Axicle system.
-
-It’s total chaos here. But there’s hope—you.”
-"""
-            let text2 = """
-“Your mission: recover critical information by solving the hackers’ ciphers.
-
-Each file you decrypt unlocks the next step in the rescue. Don’t worry—I’ll guide you.”
-"""
-            let text3 = "“Start with the Keynote. The hacker left an encrypted message. Decode it to get the password!”"
+            let text1 = "Steve Jobs believed you could save us. Hackers locked the WWDC keynote, attendee list, and Axicle system. It's chaos!"
+                let text2 = "Your mission: Solve their ciphers to recover the files. I’ll guide you along the way."
+                let text3 = "Start with the keynote. Use the Caesar Cipher to decode the hacker’s message and uncover the password!"
+          
             let message1 = MessageViewStruct(text:text1 , isIncoming: true)
             let message2 = MessageViewStruct(text:text2 , isIncoming: true)
             let message3 = MessageViewStruct(text:text3 , isIncoming: true)
@@ -149,30 +140,30 @@ Each file you decrypt unlocks the next step in the rescue. Don’t worry—I’l
                 self.openWindow(.mockKeynote)
              })
            
-            let message3 = MessageViewStruct(text: "Great job unlocking the keynote! We’re one step closer to saving WWDC.", isIncoming: true)
-            let message4 = MessageViewStruct(text: "Next, we need to recover the attendee list. The hacker hid the list in the system, and the location is encrypted in Morse Code.", isIncoming: true)
+            let message3 = MessageViewStruct(text: "Great job! Now, we need the attendee list.", isIncoming: true)
+            let message4 = MessageViewStruct(text: "The hacker hid it using Morse Code. Decode this to locate it", isIncoming: true)
             
             let morseCodeText = """
 Encrypted Morse Code: "..- | ... | . | .-. | ... | ..-. | --- | .-.. | -.. | . | .-. "
 """
              let message5 = MessageViewStruct(text: morseCodeText, isIncoming: true)
-             let message6 = MessageViewStruct(text: "Use the Morse Code tool in the system to decode it ", isIncoming: true,messageStyle: .tip)
+             let message6 = MessageViewStruct(text: "Tip: Use the Morse Code tool on your desktop. ", isIncoming: true,messageStyle: .tip)
             let message7 = MessageViewStruct(text: "Morse Code Tool", isIncoming: true,messageStyle:.link(Image(.morseTool),"MorseCode.tool"),onTap: {
                   if self.gameSteps == .level2{
                       self.openWindow(.level2)
                   }
               })
             
-              let message8 = MessageViewStruct(text: "Once decoded, head to the correct location to find the attendee list file and use the password from Level 1", isIncoming: true,messageStyle: .tip)
+             
                     
-            self.addMessagesToQueue([message1,message2,message3,message4,message5,message6,message7,message8])
+            self.addMessagesToQueue([message1,message2,message3,message4,message5,message6,message7])
                    
                        
                  
             
         case .usersFolder:
             let text1 = """
-Navigate to the Users Folder on the desktop. Once there, open the attendee file. You’ll need the password you just decoded in Level 1 (5FC@WWDC) to unlock it.
+Navigate to the Users folder on the desktop and open the attendee file. Use the password you decoded in Level 1: 5FC@WWDC.
 """
             self.messages.append(MessageViewStruct(text: text1, isIncoming: true,messageStyle: .tip))
             
@@ -181,53 +172,40 @@ Navigate to the Users Folder on the desktop. Once there, open the attendee file.
               // open attendee database showing file
               self.openWindow(.mockAttendeeDatabase)
           })
-            let text1 = "I’ve sent the attendee list. Are we good to go?"
-          let message2 = MessageViewStruct(text: text1, isIncoming: false)
+            
+          
                
-            let text2 = "You’ve saved the doors from chaos! But the Axicle system is still at risk. Let’s secure it."
+            let text2 = "You’ve saved the doors from chaos! But Axicle is still at risk."
             let message3 = MessageViewStruct(text: text2, isIncoming: true)
-            let message4 = MessageViewStruct(text: "The Axicle system’s backup key is corrupted. Decode the Atbash Cipher to restore it.", isIncoming: true)
-            let message5 = MessageViewStruct(text: "The key is stored in the Axicle Terminal on your desktop. Open it to get started.", isIncoming: true, messageStyle: .tip)
+            let message4 = MessageViewStruct(text: "The Axicle backup key is corrupted. Decode the Atbash Cipher to restore it.", isIncoming: true)
+            let message5 = MessageViewStruct(text: "Find the Axicle Terminal on your desktop and open it to start.", isIncoming: true, messageStyle: .tip)
                    
-            self.addMessagesToQueue([message1, message2, message3, message4, message5])
+            self.addMessagesToQueue([message1, message3, message4, message5])
         case .level4:
-            let text1 = "Congratulations! Thanks to you, the Axicle system is now fully restored, and WWDC is back on track."
-            let text2 = "You’ve truly saved the day! 🎉"
-            let text3 = "We’ve sent you an exclusive link to watch the WWDC live stream."
-            let text4 = "There’s something very special waiting for you—don’t miss it!"
-            
-            let message1 = MessageViewStruct(text: "Axicle is now fully restored!", isIncoming: false)
-            let message2 = MessageViewStruct(text: text1, isIncoming: true)
-           
-            let message3 = MessageViewStruct(text: text2, isIncoming: true,messageStyle: .congratulations)
-            let message4 = MessageViewStruct(text: text3, isIncoming: true)
-         let message5 = MessageViewStruct(text: text4, isIncoming: true,messageStyle: .tip)
-            let message6 = MessageViewStruct(text: "WWDC Live Stream", isIncoming: true,messageStyle:.link(Image(systemName: "safari.fill"),"https://developer.apple.com/wwdc/2025"),onTap: {
-                if self.gameSteps == .level4 {
-                    self.openWindow(.level4Browser)
-                }
-               
-            })
-                    
-            self.addMessagesToQueue([message1, message2, message3, message4, message5, message6])
+            let message1 = MessageViewStruct(text: "Axicle is fully restored! 🎉", isIncoming: true, messageStyle: .congratulations)
+                let message2 = MessageViewStruct(text: "You’ve saved WWDC. We’ve sent you a link to watch the live stream.", isIncoming: true, messageStyle: .congratulations)
+                   let message3 = MessageViewStruct(
+                       text: "WWDC Live Stream",
+                       isIncoming: true,
+                       messageStyle: .link(Image(systemName: "safari.fill"), "https://developer.apple.com/wwdc/2025"),
+                       onTap: { if self.gameSteps == .level4 { self.openWindow(.level4Browser) } }
+                   )
+                   self.addMessagesToQueue([message1, message2, message3])
         case .noWifi:
-            let text1 = "Uh… there’s a problem. The stream won’t load—it says there’s no internet connection."
-            let text2 = "Oh no! It seems the hackers encrypted the Wi-Fi password, cutting us off from the network."
-            let text3 = "Figures. What’s the plan now?"
-            let text4 = "To get back online, you need to decrypt the Wi-Fi password. The tool for this is on your desktop—it’s called the ‘Level 4 Decoder.’ Open it and enter the key to decode"
-            
-            let text5 = "What about the key?"
-            let text6 = "The key is hidden. There are hints in the ‘Level 4 Decoder’ itself. It will give you four clues to guide you. Keep an eye out for them, they’ll help you find the key!"
-            let text7 = "Once you’ve decrypted the password, go to the toolbar and tap on the Wi-Fi icon to connect"
-            let message1 = MessageViewStruct(text: text1, isIncoming: false)
-            let message2 = MessageViewStruct(text: text2, isIncoming: true)
-            let message3 = MessageViewStruct(text: text3, isIncoming: false)
-            let message4 = MessageViewStruct(text: text4, isIncoming: true)
-            let message5 = MessageViewStruct(text: text5, isIncoming: false)
-            let message6 = MessageViewStruct(text: text6, isIncoming: true)
-            let message7 = MessageViewStruct(text: text7, isIncoming: true,messageStyle: .tip)
-            
-            self.addMessagesToQueue([message1, message2, message3, message4, message5, message6, message7])
+           
+            let text7 = "After decrypting the password, click the Wi-Fi icon in the toolbar to connect to the network."
+            let message1 = MessageViewStruct(text: "The stream won’t load—no internet connection!", isIncoming: false)
+                   let message2 = MessageViewStruct(
+                       text: "Hackers encrypted the Wi-Fi password. Use the ‘Level 4 Decoder’ on your desktop to decrypt it.",
+                       isIncoming: true
+                   )
+                   let message3 = MessageViewStruct(
+                       text: "The decoder has four clues to help you find the key. Use them wisely.",
+                       isIncoming: true,
+                       messageStyle: .tip
+                   )
+            let message4 = MessageViewStruct(text: text7, isIncoming: true,messageStyle: .tip)
+            self.addMessagesToQueue([message1, message2, message3,message4])
         case .connectedToWifi:
             let message1 = MessageViewStruct(text: "You’re connected to Wi-Fi!", isIncoming: true,messageStyle: .congratulations)
             let message2 = MessageViewStruct(text: "Now, try opening the WWDC live stream link again. It’s time to witness what you’ve worked so hard to save!", isIncoming: true)
@@ -241,11 +219,13 @@ Navigate to the Users Folder on the desktop. Once there, open the attendee file.
             self.addMessagesToQueue([message1, message2, message3])
         case .watchedAnimation:
             // congratulate , say him to get hiz prizes and say your mission finished
-            let message1 = MessageViewStruct(text: "What a journey, Cipher Master! Steve was truly impressed with your brilliance, and so are we.", isIncoming: true)
-            let message2 = MessageViewStruct(text: "Your mission is now complete, and you’ve saved WWDC 🎉", isIncoming: true,messageStyle: .congratulations)
-            let message3 = MessageViewStruct(text: "Head over to the Prizes folder on your desktop and check out what’s waiting for you!", isIncoming: true,messageStyle: .tip)
-            let message4 = MessageViewStruct(text: "Once again, congratulations on a job well done. You’re officially a legend!", isIncoming: true,messageStyle: .congratulations)
-            self.addMessagesToQueue([message1, message2, message3, message4])
+            let message1 = MessageViewStruct(text: "Amazing job, Cipher Master! You’ve saved WWDC! 🎉", isIncoming: true, messageStyle: .congratulations)
+                   let message2 = MessageViewStruct(
+                       text: "Head to the Prizes folder on your desktop for your rewards.",
+                       isIncoming: true,
+                       messageStyle: .tip
+                   )
+                   self.addMessagesToQueue([message1, message2])
            
         default:
             print("new")

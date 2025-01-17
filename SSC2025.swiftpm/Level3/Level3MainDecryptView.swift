@@ -225,7 +225,7 @@ Example: A ↔ Z, B ↔ Y, C ↔ X...
                     self.showTextField = true
                     
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 12){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                         if self.level3Data.step == .proceed{
                             let additionalTip = """
                                 [HINT] Struggling to decode the backup key?  

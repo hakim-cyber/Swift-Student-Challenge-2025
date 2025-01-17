@@ -12,48 +12,40 @@ struct Level1WelcomeView: View {
     var next:()->Void
     var body: some View {
         
-            VStack(spacing: 25){
-                VStack{
-                    Text("Welcome")
-                        .font(.system(size: 25, weight: .black, design: .monospaced))
-                        .foregroundStyle(Color.white)
-                    Text("Cipher Master!")
-                        .font(.system(size: 25, weight: .black, design: .monospaced))
-                        .foregroundStyle(Color.cyan)
-                }
-                VStack(alignment:.leading, spacing:10){
-                    Text("The keynote presentation is locked behind a password encrypted by the hackers.")
-                    
-                        .font(.system(size: 16, weight: .bold, design: .monospaced))
-                        .foregroundStyle(Color.white)
-                        .multilineTextAlignment(.leading)
-                    
-                    Text("Your mission: Decode the Caesar Cipher, unlock the folder, and send the file to Steve Jobs' assistant.")
-                        .font(.system(size: 16, weight: .bold, design: .monospaced))
-                        .foregroundStyle(.cyan)
-                        .multilineTextAlignment(.leading)
-                   
-                }
-                .padding()
-                Spacer()
-                Text("Time is ticking—WWDC depends on you!")
-                    .font(.system(size: 18, weight: .black, design: .monospaced))
-                    .foregroundStyle(.red)
+        VStack(spacing: 25) {
+            VStack {
+                Text("Welcome")
+                    .font(.system(size: 25, weight: .black, design: .monospaced))
+                    .foregroundStyle(Color.white)
+                Text("Cipher Master!")
+                    .font(.system(size: 25, weight: .black, design: .monospaced))
+                    .foregroundStyle(Color.cyan)
+            }
+            VStack(alignment: .leading, spacing: 10) {
+                Text("The keynote is locked with an encrypted password.")
+                    .font(.system(size: 16, weight: .bold, design: .monospaced))
+                    .foregroundStyle(Color.white)
                     .multilineTextAlignment(.leading)
                 
-               
-                AnimatedButtonMeshGradient(text: "Start") {
-                    next()
-                }
-              
-               
-                
-                
-               
+                Text("Decode the Caesar Cipher, unlock the folder, and send it to Steve’s assistant.")
+                    .font(.system(size: 16, weight: .bold, design: .monospaced))
+                    .foregroundStyle(.cyan)
+                    .multilineTextAlignment(.leading)
             }
-            .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
             .padding()
-            .padding(.top,20)
+            Spacer()
+            Text("Time is ticking—WWDC depends on you!")
+                .font(.system(size: 18, weight: .black, design: .monospaced))
+                .foregroundStyle(.red)
+                .multilineTextAlignment(.leading)
+            
+            AnimatedButtonMeshGradient(text: "Start") {
+                next()
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .padding()
+        .padding(.top, 20)
        
     }
 }

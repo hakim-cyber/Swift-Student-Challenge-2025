@@ -53,7 +53,7 @@ struct Level2FolderView: View {
                         Level2PasswordView(size: windowSize){
                             sentFile = true
                             self.close()
-                            
+                            self.data.closeWindow(.usersFolder)
                         }
                     }
                 }else{
