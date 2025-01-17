@@ -56,18 +56,30 @@ struct DesktopItemsView: View {
                 }
                     
             }
-            if self.data.gameSteps == .noWifi{
+           
             HStack(alignment:.firstTextBaseline, spacing:25){
-              
+                if self.data.gameSteps == .noWifi{
                     Button{
-                       
-                        self.data.openWindow(.level4Decoder) 
+                        
+                        self.data.openWindow(.level4Decoder)
                         
                     }label:{
                         item(text: "Level 4 Decoder", image: Image(systemName:"wifi.slash"))
                     }
                 }
-            }
+                if self.data.gameSteps == .watchedAnimation{
+                    Button{
+                        
+                        self.data.openWindow(.prizeFolder)
+                        
+                    }label:{
+                        item(text: "Prizes Folder", image: Image("folder"))
+                    }
+                }
+                
+                
+                }
+            
            
         }
         .padding()

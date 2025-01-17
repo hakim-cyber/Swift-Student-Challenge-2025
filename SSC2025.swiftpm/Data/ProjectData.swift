@@ -14,7 +14,7 @@ class ProjectData: ObservableObject {
     
     @Published  var userName: String = ""
     @Published var startSteps : StartSteps = .helloView
-    @Published var gameSteps : GameSteps = .openMessagesApp{
+    @Published var gameSteps : GameSteps = .watchedAnimation{
         didSet {
             handleStepsChange()
         }
@@ -274,4 +274,7 @@ enum WindowType: Int, Equatable ,CaseIterable{
     case aboutMac
     case mockKeynote
     case mockAttendeeDatabase
+    case prizeFolder
+    case certificates
+    case trophy
 }

@@ -15,7 +15,7 @@ struct PrizeFolderView: View {
         ZStack{
             HStack(spacing:20){
                 Button{
-                    
+                    self.data.openWindow(.certificates)
                     // open certificates preview view
                 }label:{
                     VStack{
@@ -34,14 +34,18 @@ struct PrizeFolderView: View {
                 }
                 Button{
                     
-                    
+                    self.data.openWindow(.trophy)
                 }label:{
                     VStack{
-                        Image(.certificate)
+                        Image(.trophy)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 80)
-                        Text("Trophy.3D")
+                            .frame(width: 30)
+                            .padding(.vertical,15)
+                            .padding(.horizontal,40)
+                            .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
+                        
+                        Text("Trophy.scn")
                             .bold()
                             .foregroundStyle(.white)
                             .frame(width: 140)
@@ -55,7 +59,7 @@ struct PrizeFolderView: View {
         }
         .modifier(MacBackgroundStyle(size: windowSize, title: "Prizes", movable: true ,close: {
            
-             
+            self.data.closeWindow(.prizeFolder)
                
             
         }))

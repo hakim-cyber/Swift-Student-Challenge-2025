@@ -147,6 +147,33 @@ struct DesktopView: View {
                                 .onTapGesture {
                                     data.bringToFront(.mockKeynote)
                                 }
+                            case .prizeFolder:
+                                PrizeFolderView(size: size)
+                                    .zIndex(Double(data.openWindows.firstIndex(of: .prizeFolder) ?? 0))
+                                    .onTapGesture {
+                                        data.bringToFront(.prizeFolder)
+                                    }
+                            case .trophy:
+                                TrophyView(size: size,swipe:{
+                                    self.data.swipeWindow(.trophy)
+                                },close:{
+                                    self.data.closeWindow(.trophy)
+                                })
+                                .zIndex(Double(data.openWindows.firstIndex(of: .trophy) ?? 0))
+                                .onTapGesture {
+                                    data.bringToFront(.trophy)
+                                }
+                                
+                            case .certificates:
+                                CertficicatePreviewView(size: size,swipe:{
+                                    self.data.swipeWindow(.certificates)
+                                },close:{
+                                    self.data.closeWindow(.certificates)
+                                })
+                                .zIndex(Double(data.openWindows.firstIndex(of: .certificates) ?? 0))
+                                .onTapGesture {
+                                    data.bringToFront(.certificates)
+                                }
                             default:
                                 EmptyView()
                             }
