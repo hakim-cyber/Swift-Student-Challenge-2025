@@ -18,10 +18,7 @@ struct MacToolbar: View {
                         Button("About This Mac"){
                             self.data.openWindow(.aboutMac)
                         }
-                        Button("Restart"){
-                            
-                        }
-                        .disabled(true)
+                        Divider()
                         if self.data.gameSteps.rawValue < GameSteps.noWifi.rawValue{
                             Button("Finish Story"){
                                 self.data.finishGameStep()
@@ -43,10 +40,7 @@ struct MacToolbar: View {
                         Button("About This Mac"){
                             self.data.openWindow(.aboutMac)
                         }
-                        Button("Restart"){
-                            
-                        }
-                        .disabled(true)
+                        Divider()
                         if self.data.gameSteps.rawValue < GameSteps.noWifi.rawValue{
                             Button("Finish Story"){
                                 self.data.finishGameStep()
@@ -57,6 +51,7 @@ struct MacToolbar: View {
                             
                         }
                         .disabled(true)
+                            
                     }label:{
                         
                         Text("Chiphre Master")
