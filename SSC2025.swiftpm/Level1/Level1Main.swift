@@ -14,102 +14,150 @@ struct Level1Main: View {
     @State private var solved:Bool = false
     @State private var shift = 0.0
     
+    @State private var selectedHint:Int? = nil
+    
     let size :CGSize
     var next:()->Void
     var back:()->Void
     var body: some View {
         
-           
-                VStack(spacing: 15){
-                    HStack{
-                        Button{
-                            back()
-                        }label: {
-                            Image(systemName: "arrow.backward")
-                                .bold()
-                                .foregroundStyle(.white)
-                        }
-                        Spacer()
+        ScrollView(.vertical){
+            VStack(spacing: 15){
+                HStack{
+                    Button{
+                        back()
+                    }label: {
+                        Image(systemName: "arrow.backward")
+                            .bold()
+                            .foregroundStyle(.white)
                     }
-                    VStack(spacing: 25){
-                        VStack(alignment: .leading,spacing: 10){
-                            Text("Encrypted Message from Hackers:")
-                                .font(.system(size: 18, weight: .black, design: .monospaced))
-                                .foregroundStyle(Color.white)
-                            Text("Hint:“In Caesar Cipher, letters are shifted by a fixed number. Try adjusting the slider!”")
-                                .font(.system(size: 14, weight:.regular, design: .monospaced))
-                                .foregroundStyle(Color.white)
-                            
-                        }
-                        
-                        HackerTextView(text: encryptedText, trigger: false,transition:.identity, speed: 0.01)
-                        
-                            .font(.system(size: 18, weight: solved ? .black : .bold, design: .monospaced))
+                    Spacer()
+                }
+                VStack(spacing: 25){
+                    VStack(alignment: .leading,spacing: 10){
+                        Text("Encrypted Message from Hackers:")
+                            .font(.system(size: 18, weight: .black, design: .monospaced))
+                            .foregroundStyle(Color.white)
+                        Text("Hint:“In Caesar Cipher, letters are shifted by a fixed number. Try adjusting the slider!”")
+                            .font(.system(size: 14, weight:.regular, design: .monospaced))
                             .foregroundStyle(Color.white)
                         
-                        
-                            .padding()
-                        
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .overlay{
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(solved ? Color.cyan : Color.red,lineWidth: 3)
-                            }
-                        
-                        VStack(){
-                            Text("Shift:\(Int(shift))")
-                                .font(.system(size: 18, weight: .bold, design: .monospaced))
-                                .foregroundStyle(Color.white)
-                            Slider(value: $shift, in: 0...10,step:1)
-                                .tint(solved ? Color.cyan : Color.red)
-                                .onChange(of: shift) {old,newValue in
-                                    if shift == 0{
-                                        self.encryptedText = original
-                                    }else{
-                                        let newString = caesar(text: original, shift: Int(-newValue))
-                                        self.encryptedText = newString
-                                        print(newString)
-                                    }
-                                    if shift == 3{
-                                        self.solved = true
-                                    }else{
-                                        self.solved = false
-                                    }
+                    }
+                    
+                    HackerTextView(text: encryptedText, trigger: false,transition:.identity, speed: 0.01)
+                    
+                        .font(.system(size: 18, weight: solved ? .black : .bold, design: .monospaced))
+                        .foregroundStyle(Color.white)
+                    
+                    
+                        .padding()
+                    
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .overlay{
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(solved ? Color.cyan : Color.red,lineWidth: 3)
+                        }
+                    
+                    VStack(){
+                        Text("Shift:\(Int(shift))")
+                            .font(.system(size: 18, weight: .bold, design: .monospaced))
+                            .foregroundStyle(Color.white)
+                        Slider(value: $shift, in: 0...10,step:1)
+                            .tint(solved ? Color.cyan : Color.red)
+                            .onChange(of: shift) {old,newValue in
+                                if shift == 0{
+                                    self.encryptedText = original
+                                }else{
+                                    let newString = caesar(text: original, shift: Int(-newValue))
+                                    self.encryptedText = newString
+                                    print(newString)
                                 }
-                                .frame(width: size.width / 4)
-                            
-                        }
-                        if solved{
-//                            Button{
-//                                UIPasteboard.general.string = "5FC@WWDC"
-//                                next()
-//                            }label: {
-//                                HStack{
-//                                    Text("Copy Password")
-//                                        .font(.system(size: 18, weight: .bold, design: .default))
-//                                        .foregroundStyle(Color.white)
-//                                        .multilineTextAlignment(.leading)
-//                                }
-//                                .padding(8)
-//                                .padding(.horizontal,40)
-//                                .background(Color.cyan)
-//                                .clipShape(RoundedRectangle(cornerRadius: 8))
-//
-//                            }
-                            AnimatedButtonMeshGradient(text: "Copy Password", image: Image(systemName: "document.on.document.fill"), action: {
-                                UIPasteboard.general.string = "5FC@WWDC"
-                                                             next()
-                            })
-                            .transition(.opacity)
-                        }
+                                if shift == 3{
+                                    self.solved = true
+                                }else{
+                                    self.solved = false
+                                }
+                            }
+                            .frame(width: size.width / 4)
+                        
+                    }
+                    if solved{
+                        //                            Button{
+                        //                                UIPasteboard.general.string = "5FC@WWDC"
+                        //                                next()
+                        //                            }label: {
+                        //                                HStack{
+                        //                                    Text("Copy Password")
+                        //                                        .font(.system(size: 18, weight: .bold, design: .default))
+                        //                                        .foregroundStyle(Color.white)
+                        //                                        .multilineTextAlignment(.leading)
+                        //                                }
+                        //                                .padding(8)
+                        //                                .padding(.horizontal,40)
+                        //                                .background(Color.cyan)
+                        //                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                        //
+                        //                            }
+                        AnimatedButtonMeshGradient(text: "Copy Password", image: Image(systemName: "document.on.document.fill"), action: {
+                            UIPasteboard.general.string = "5FC@WWDC"
+                            next()
+                        })
+                        .transition(.opacity)
+                    }
+                    hintView(index: 1, hint: "The key to decoding lies in the number '3.' Adjust the slider and watch the encrypted message transform!")
+                    Color.clear.frame(height: 50)
+                }
+            }
+            .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
+            .padding()
+            .padding(.top,20)
+            .particleEffect(systemImage: "star.fill", font: .largeTitle, status: solved, activeTint: .yellow, inactiveTint: .secondary)
+        }
+        
+    }
+    @ViewBuilder
+    func hintView(index:Int,hint:String) -> some View {
+        VStack(spacing:15){
+            
+            VStack(alignment:.leading, spacing:10){
+                HStack{
+                    Image(systemName: "lightbulb.min.fill")
+                        .foregroundStyle(.yellow)
+                    
+                    Text("Hint \(index)")
+                    
+                    Spacer()
+                    if self.selectedHint    != index {
+                        Image(systemName: "chevron.down")
+                            .foregroundStyle(.secondary)
+                    }else{
+                        Image(systemName: "chevron.up")
+                            .foregroundStyle(.secondary)
                     }
                 }
-                .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .top)
-                .padding()
-                .padding(.top,20)
-                .particleEffect(systemImage: "star.fill", font: .largeTitle, status: solved, activeTint: .yellow, inactiveTint: .secondary)
-           
-        
+                .fontWeight(.black)
+                .padding(.horizontal,20)
+                if self.selectedHint    == index {
+                    Text(hint)
+                        .multilineTextAlignment(.leading)
+                        .fontWeight(.black)
+                        .padding(.horizontal,20)
+                       
+                }
+               
+            }
+            Divider()
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: 0.2)){
+                if self.selectedHint == index {
+                    selectedHint = nil
+                }else{
+                    selectedHint = index
+                }
+            }
+        }
     }
     func caesar(text: String, shift: Int) -> String {
         // Normalize the shift to be within the range of 0-25
