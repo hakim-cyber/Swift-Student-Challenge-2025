@@ -22,7 +22,12 @@ struct MacToolbar: View {
                             
                         }
                         .disabled(true)
-                            
+                        if self.data.gameSteps.rawValue < GameSteps.noWifi.rawValue{
+                            Button("Finish Story"){
+                                self.data.finishGameStep()
+                            }
+                           
+                        }
                         Button("Log Out"){
                             
                         }
@@ -42,7 +47,12 @@ struct MacToolbar: View {
                             
                         }
                         .disabled(true)
-                            
+                        if self.data.gameSteps.rawValue < GameSteps.noWifi.rawValue{
+                            Button("Finish Story"){
+                                self.data.finishGameStep()
+                            }
+                           
+                        }
                         Button("Log Out"){
                             
                         }

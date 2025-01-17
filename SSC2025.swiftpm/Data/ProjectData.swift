@@ -45,7 +45,7 @@ class ProjectData: ObservableObject {
     
     @Published var messageQueue: [MessageViewStruct] = []
     private var timer: Timer?
-    private var typingSpeed: TimeInterval = 0.01
+    @Published private var typingSpeed: TimeInterval = 0.01
    
     
     // Time per character
@@ -231,6 +231,17 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
             print("new")
         }
     }
+     func finishGameStep() {
+        
+         self.typingSpeed = 0.01
+            guard let lastStep = GameSteps.allCases.last else { return }
+            if gameSteps.rawValue < lastStep.rawValue {
+                DispatchQueue.main.async {
+                    self.gameSteps = GameSteps(rawValue: self.gameSteps.rawValue + 1) ?? self.gameSteps
+                    self.finishGameStep() // Continue until reaching the last step
+                }
+            }
+        }
 }
 
 
@@ -238,7 +249,7 @@ enum StartSteps:String{
     case helloView,nameView,desktopView
 }
 
-enum GameSteps:Int{
+enum GameSteps:Int,CaseIterable{
     case openMessagesApp,level1,level2,usersFolder,level3,level4,noWifi,connectedToWifi,watchedAnimation
 }
 
