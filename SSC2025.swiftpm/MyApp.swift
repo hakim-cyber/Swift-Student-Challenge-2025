@@ -12,7 +12,8 @@ struct MyApp: App {
         WindowGroup {
            
                 ZStack{
-                    DesktopView()
+                    CertficicatePreviewView(size:UIScreen.main.bounds.size)
+                        
                         .preferredColorScheme(.dark)
                         .environmentObject(projectData)
                         .environmentObject(level4Data)

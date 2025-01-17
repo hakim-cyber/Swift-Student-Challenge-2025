@@ -47,6 +47,7 @@ struct CertificateBackView: View {
                         Text("Made with ❤️ by Hakim")
                             .font(.system(size: size / 35, weight: .medium))
                     }
+                    .foregroundColor(.white)
                     .frame(maxWidth:.infinity,maxHeight: .infinity,alignment: .top)
                     .padding(size / 12)
                 }
@@ -55,6 +56,7 @@ struct CertificateBackView: View {
         .clipShape(RoundedRectangle(cornerRadius: 0,style: .continuous))
         .background(RoundedRectangle(cornerRadius: 0,style: .continuous)  .stroke(metalicGradient,
             lineWidth: 4))
+        .padding()
        
     }
     func congratText(name:String)->String{
@@ -106,9 +108,10 @@ struct CertificateFrontView: View {
            }
            .frame(width: size ,height: size)
            
-           .clipShape(RoundedRectangle(cornerRadius: 15,style: .continuous))
-           .background(RoundedRectangle(cornerRadius: 15,style: .continuous)  .stroke(metalicGradient,
+           .clipShape(RoundedRectangle(cornerRadius: 0,style: .continuous))
+           .background(RoundedRectangle(cornerRadius: 0,style: .continuous)  .stroke(metalicGradient,
                lineWidth: 4))
+           .padding()
        }
     
    

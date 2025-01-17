@@ -93,19 +93,6 @@ struct MacBackgroundStyle:ViewModifier{
         self.offset.width = value.translation.width + lastoffset.width
         self.offset.height = value.translation.height + lastoffset.height
 
-        // Check snapping conditions
-//        let snapThreshold: CGFloat = 20.0
-//
-//        if abs(self.offset.width) < snapThreshold {
-//            self.offset.width = 0
-//           
-//            
-//        }
-//
-//        if abs(self.offset.height) < snapThreshold {
-//            self.offset.height = 0
-//           
-//            
-//        }
+        
     }
 }
