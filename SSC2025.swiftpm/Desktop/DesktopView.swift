@@ -15,7 +15,7 @@ struct DesktopView: View {
             
                
                     ZStack{
-                        Image("desktop")
+                        data.selectedBackground.image
                             .resizable()
                             .ignoresSafeArea()
                             .zIndex(-1)
@@ -174,6 +174,12 @@ struct DesktopView: View {
                                 .onTapGesture {
                                     data.bringToFront(.certificates)
                                 }
+                            case .backgroundSelect:
+                                BackgroundSelectVIew(sizeOfScreen:size)
+                                    .zIndex(Double(data.openWindows.firstIndex(of: .backgroundSelect) ?? 0))
+                                    .onTapGesture {
+                                        data.bringToFront(.backgroundSelect)
+                                    }
                             default:
                                 EmptyView()
                             }

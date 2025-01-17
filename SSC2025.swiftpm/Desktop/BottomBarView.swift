@@ -12,7 +12,7 @@ struct BottomBarView: View {
     let sizeofscreen:CGSize
     var body: some View {
         
-        if data.gameSteps.rawValue > GameSteps.openMessagesApp.rawValue && self.data.showDock{
+        if !data.stopDock && data.gameSteps.rawValue > GameSteps.openMessagesApp.rawValue && self.data.showDock{
             HStack(spacing:15){
                 let windows = data.dockWindows
                 ForEach(windows,id:\.self){window in

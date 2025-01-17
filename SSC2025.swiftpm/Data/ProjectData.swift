@@ -19,7 +19,8 @@ class ProjectData: ObservableObject {
             handleStepsChange()
         }
     }
-    
+    @Published var selectedBackground:BackgroundImages = .proBlack
+    @Published var stopDock = false
     
     @Published var notifications : [NotificationStruct] = []
     @Published var messages: [MessageViewStruct] = []
@@ -268,4 +269,5 @@ enum WindowType: Int, Equatable ,CaseIterable{
     case prizeFolder
     case certificates
     case trophy
+    case backgroundSelect
 }

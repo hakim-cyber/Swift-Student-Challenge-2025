@@ -10,6 +10,8 @@ import SwiftUI
 struct MacToolbar: View {
     @EnvironmentObject var data:ProjectData
     let sizeOFScreen: CGSize
+    
+    @State private var showCenterPopOver: Bool = false
     var body: some View {
        
             
@@ -102,10 +104,20 @@ struct MacToolbar: View {
                         }
                     }
                    
-                    
+                   
                     Image(systemName: "magnifyingglass")
-                    Image(systemName: "switch.2")
-                    
+                   
+                    Button{
+                        self.showCenterPopOver.toggle()
+                    }label: {
+                        Image(systemName: "switch.2")
+                    }
+                    .popover(isPresented: $showCenterPopOver, attachmentAnchor: .point(.bottom)) {
+                        ControlCenterView(size:sizeOFScreen){
+                            self.showCenterPopOver = false
+                        }
+                            .presentationBackground(.clear)
+                    }
                     Text((Date.now).formatted(date: .abbreviated, time: .shortened))
                 }
                 .fontWeight(.medium)

@@ -26,7 +26,7 @@ struct Level3MainDecryptView: View {
     var body: some View {
         ZStack{
            if self.data.gameSteps == .level3{
-                Image(.desktop)
+               data.selectedBackground.image
                     .resizable()
                     .ignoresSafeArea()
             }
