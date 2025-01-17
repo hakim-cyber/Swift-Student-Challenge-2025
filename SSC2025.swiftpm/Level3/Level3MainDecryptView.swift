@@ -102,15 +102,17 @@ struct Level3MainDecryptView: View {
     var startLoginmessage: some View {
         Text("Last login: ") + Text((Date.now - 300).formatted(date: .long, time: .shortened))
     }
+    @ViewBuilder
     var textView: some View {
+        let name =  (self.data.userName == "" ? "Master" : self.data.userName).lowercased()
         HStack{
-            Text("steve@steve's Mac ~ %")
+            Text("\(name)@\(name)'s Mac ~ %")
             TextField("", text: $newText)
                 .accentColor(.cyan)
                 .foregroundStyle(.white)
                 .focused($focusedField)
                 .onSubmit {
-                    self.level3Data.messages.append(Message(message: "steve@steve's Mac ~ %  \(newText)"))
+                    self.level3Data.messages.append(Message(message: "\(name)@\(name)'s Mac ~ %  \(newText)"))
                     
                     self.responceToMessage(message: newText)
                     self.newText = ""
