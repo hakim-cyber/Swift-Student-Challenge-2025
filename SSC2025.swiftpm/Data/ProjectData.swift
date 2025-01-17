@@ -45,7 +45,7 @@ class ProjectData: ObservableObject {
     
     @Published var messageQueue: [MessageViewStruct] = []
     private var timer: Timer?
-    private var typingSpeed: TimeInterval = 0.025
+    private var typingSpeed: TimeInterval = 0.03
    
     
     // Time per character

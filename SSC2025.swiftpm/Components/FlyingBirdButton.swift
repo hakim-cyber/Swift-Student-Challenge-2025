@@ -48,8 +48,10 @@ struct FlyingBirdButton: View {
             if isFlying {
                 BirdAnimationView {
                     // Reset the button and bird after flying animation completes
-                    isFlying = false
-                    showButton = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        isFlying = false
+                        showButton = true
+                    }
                 }
             }
         }
