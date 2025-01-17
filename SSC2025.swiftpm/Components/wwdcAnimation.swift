@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WWDCEvent {
-    let year: Int
+    let year: String
     let event: String
 }
 let steveWords:[String] = [
@@ -23,38 +23,38 @@ You didn’t just solve puzzles—you saved a global event.
 ]
 
 let wwdcTimeline: [WWDCEvent] = [
-    WWDCEvent(year: 1983, event: "First WWDC. Apple introduces new programming tools for the Apple IIe."),
-    WWDCEvent(year: 1984, event: "Macintosh System Software announced."),
-    WWDCEvent(year: 1987, event: "Macintosh System Software 7 announced."),
-    WWDCEvent(year: 1991, event: "Power Macintosh announced."),
-    WWDCEvent(year: 1992, event: "QuickTime for Windows introduced."),
-    WWDCEvent(year: 1997, event: "Steve Jobs returns to Apple."),
-    WWDCEvent(year: 2000, event: "Mac OS X introduced."),
-    WWDCEvent(year: 2001, event: "First iPod released."),
-    WWDCEvent(year: 2002, event: "iTunes Store launched."),
-    WWDCEvent(year: 2003, event: "Safari browser announced."),
-    WWDCEvent(year: 2004, event: "The original iMac G5 introduced."),
-    WWDCEvent(year: 2005, event: "Apple switches to Intel processors for Macs."),
-    WWDCEvent(year: 2006, event: "MacBook Pro introduced."),
-    WWDCEvent(year: 2007, event: "iPhone announced."),
-    WWDCEvent(year: 2008, event: "App Store launched."),
-    WWDCEvent(year: 2009, event: "iPhone OS 3.0 with MMS support."),
-    WWDCEvent(year: 2010, event: "iOS 4 introduced, featuring multitasking."),
-    WWDCEvent(year: 2011, event: "iCloud launched."),
-    WWDCEvent(year: 2012, event: "Retina Display announced for MacBook Pro."),
-    WWDCEvent(year: 2013, event: "OS X Mavericks and iOS 7 announced."),
-    WWDCEvent(year: 2014, event: "Swift programming language introduced."),
-    WWDCEvent(year: 2015, event: "Apple Watch announced."),
-    WWDCEvent(year: 2016, event: "ARKit and SiriKit introduced."),
-    WWDCEvent(year: 2017, event: "iMac Pro and iOS 11 introduced."),
-    WWDCEvent(year: 2018, event: "iOS 12 introduced with Dark Mode."),
-    WWDCEvent(year: 2019, event: "iPadOS and macOS Catalina introduced."),
-    WWDCEvent(year: 2020, event: "Apple Silicon announced."),
-    WWDCEvent(year: 2021, event: "iOS 15 and macOS Monterey introduced."),
-    WWDCEvent(year: 2022, event: "M2 Chip and iOS 16 introduced."),
-    WWDCEvent(year: 2023, event: "Vision Pro and spatial computing introduced."),
-    WWDCEvent(year: 2024, event: "iOS 17, macOS 14 announced."),
-    WWDCEvent(year: 2025, event: "")
+    WWDCEvent(year: "1983", event: "First WWDC. Apple introduces new programming tools for the Apple IIe."),
+    WWDCEvent(year: "1984", event: "Macintosh System Software announced."),
+    WWDCEvent(year: "1987", event: "Macintosh System Software 7 announced."),
+    WWDCEvent(year: "1991", event: "Power Macintosh announced."),
+    WWDCEvent(year: "1992", event: "QuickTime for Windows introduced."),
+    WWDCEvent(year: "1997", event: "Steve Jobs returns to Apple."),
+    WWDCEvent(year: "2000", event: "Mac OS X introduced."),
+    WWDCEvent(year: "2001", event: "First iPod released."),
+    WWDCEvent(year: "2002", event: "iTunes Store launched."),
+    WWDCEvent(year: "2003", event: "Safari browser announced."),
+    WWDCEvent(year: "2004", event: "The original iMac G5 introduced."),
+    WWDCEvent(year: "2005", event: "Apple switches to Intel processors for Macs."),
+    WWDCEvent(year: "2006", event: "MacBook Pro introduced."),
+    WWDCEvent(year: "2007", event: "iPhone announced."),
+    WWDCEvent(year: "2008", event: "App Store launched."),
+    WWDCEvent(year: "2009", event: "iPhone OS 3.0 with MMS support."),
+    WWDCEvent(year: "2010", event: "iOS 4 introduced, featuring multitasking."),
+    WWDCEvent(year: "2011", event: "iCloud launched."),
+    WWDCEvent(year: "2012", event: "Retina Display announced for MacBook Pro."),
+    WWDCEvent(year: "2013", event: "OS X Mavericks and iOS 7 announced."),
+    WWDCEvent(year: "2014", event: "Swift programming language introduced."),
+    WWDCEvent(year: "2015", event: "Apple Watch announced."),
+    WWDCEvent(year: "2016", event: "ARKit and SiriKit introduced."),
+    WWDCEvent(year: "2017", event: "iMac Pro and iOS 11 introduced."),
+    WWDCEvent(year: "2018", event: "iOS 12 introduced with Dark Mode."),
+    WWDCEvent(year: "2019", event: "iPadOS and macOS Catalina introduced."),
+    WWDCEvent(year: "2020", event: "Apple Silicon announced."),
+    WWDCEvent(year: "2021", event: "iOS 15 and macOS Monterey introduced."),
+    WWDCEvent(year: "2022", event: "M2 Chip and iOS 16 introduced."),
+    WWDCEvent(year: "2023", event: "Vision Pro and spatial computing introduced."),
+    WWDCEvent(year: "2024", event: "iOS 17, macOS 14 announced."),
+    WWDCEvent(year: "2025", event: "")
 ]
 struct WWDCAnimationView: View {
     @State private var sizeOfScreen = UIScreen.main.bounds.size

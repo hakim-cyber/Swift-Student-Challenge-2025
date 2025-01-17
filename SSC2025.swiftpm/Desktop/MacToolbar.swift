@@ -18,7 +18,11 @@ struct MacToolbar: View {
                         Button("About This Mac"){
                             self.data.openWindow(.aboutMac)
                         }
-                       
+                        Button("Restart"){
+                            
+                        }
+                        .disabled(true)
+                            
                         Button("Log Out"){
                             
                         }
@@ -31,7 +35,18 @@ struct MacToolbar: View {
                         
                     }
                     Menu{
-                        
+                        Button("About This Mac"){
+                            self.data.openWindow(.aboutMac)
+                        }
+                        Button("Restart"){
+                            
+                        }
+                        .disabled(true)
+                            
+                        Button("Log Out"){
+                            
+                        }
+                        .disabled(true)
                     }label:{
                         
                         Text("Chiphre Master")

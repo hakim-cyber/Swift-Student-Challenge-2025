@@ -81,6 +81,7 @@ struct DesktopItemsView: View {
                 .resizable()
                 .scaledToFit()
                 .foregroundStyle(.blue)
+                .fontWeight(.medium)
                 .frame(height: sizeOFScreen.width*0.05)
                 .opacity(isLocked ? 0.7 : 1)
                 .overlay {
