@@ -43,7 +43,7 @@ struct MessagesView: View {
                 }
                 
             }
-            .modifier(MacBackgroundStyle(size: .init(width: sizeofScreen.width / 2, height: sizeofScreen.height / 1.2),title: "To: Steve Jobs Assistant", movable: true,alignment: .leading,swipe:{
+            .modifier(MacBackgroundStyle(size: .init(width: sizeofScreen.width / 2.3, height: sizeofScreen.height / 1.5),title: "To: Steve Jobs Assistant", movable: true,alignment: .leading,swipe:{
                 self.data.swipeWindow(.messages)
             }, close: {
                 self.data.swipeWindow(.messages)

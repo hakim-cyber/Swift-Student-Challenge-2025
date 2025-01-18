@@ -76,7 +76,8 @@ struct BottomBarView: View {
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .bottom)
             .transition(.move(edge: .bottom))
-            
+            .padding(10)
+            .ignoresSafeArea()
            
         }
     
