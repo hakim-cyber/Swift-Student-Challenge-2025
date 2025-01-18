@@ -27,10 +27,9 @@ let package = Package(
                 .phone
             ],
             supportedInterfaceOrientations: [
-                .portrait,
+               
                 .landscapeRight,
-                .landscapeLeft,
-                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
+                .landscapeLeft
             ],
             capabilities: [
                 .fileAccess(.userSelectedFiles, mode: .readWrite)
