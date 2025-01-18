@@ -70,6 +70,9 @@ struct Level3MainDecryptView: View {
                             scroll.scrollTo("space")
                         
                     }
+                    .onAppear{
+                        scroll.scrollTo("space")
+                    }
                 }
                 
             }

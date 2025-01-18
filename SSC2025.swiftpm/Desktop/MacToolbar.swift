@@ -117,6 +117,7 @@ struct MacToolbar: View {
                             self.showCenterPopOver = false
                         }
                             .presentationBackground(.clear)
+                            .environmentObject(self.data)
                     }
                     Text((Date.now).formatted(date: .abbreviated, time: .shortened))
                 }

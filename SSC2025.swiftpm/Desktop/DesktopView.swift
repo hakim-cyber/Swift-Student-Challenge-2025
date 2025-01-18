@@ -65,12 +65,7 @@ struct DesktopView: View {
                                     self.data.gameSteps = .noWifi
                                     self.data.closeWindow(.level4Browser)
                                 }
-                                .modifier(MacBackgroundStyle(size: .init(width: size.width / 1.5, height: size.height / 1.5),title:"https://developer.apple.com/wwdc/2025", movable: true, swipe: {
-                                    if self.data.gameSteps == .level4{
-                                        self.data.gameSteps = .noWifi
-                                    }
-                                    self.data.swipeWindow(.level4Browser)
-                                }, close: {
+                                .modifier(MacBackgroundStyle(size: .init(width: size.width / 1.5, height: size.height / 1.5),title:"https://developer.apple.com/wwdc/2025", movable: true,close: {
                                     self.data.gameSteps = .noWifi
                                     self.data.closeWindow(.level4Browser)
                                     
