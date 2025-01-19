@@ -94,7 +94,7 @@ struct DesktopItemsView: View {
                 .scaledToFit()
                 .foregroundStyle(.blue)
                 .fontWeight(.medium)
-                .frame(height: sizeOFScreen.width*0.05)
+                .frame(height: sizeOFScreen.width*0.07)
                 .opacity(isLocked ? 0.7 : 1)
                 .overlay {
                     if isLocked{
@@ -107,7 +107,7 @@ struct DesktopItemsView: View {
             Text(text)
                 .bold()
                 .foregroundStyle(.white)
-                .frame(width: sizeOFScreen.width*0.06)
+                .frame(width: sizeOFScreen.width*0.09)
             
         }
     }
