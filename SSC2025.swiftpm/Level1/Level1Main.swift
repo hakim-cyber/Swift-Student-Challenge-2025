@@ -57,30 +57,40 @@ struct Level1Main: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(solved ? Color.cyan : Color.red,lineWidth: 3)
                         }
-                    
-                    VStack(){
-                        Text("Shift:\(Int(shift))")
-                            .font(.system(size: 18, weight: .bold, design: .monospaced))
-                            .foregroundStyle(Color.white)
-                        Slider(value: $shift, in: 0...10,step:1)
-                            .tint(solved ? Color.cyan : Color.red)
-                            .onChange(of: shift) {old,newValue in
-                                if shift == 0{
-                                    self.encryptedText = original
-                                }else{
-                                    let newString = caesar(text: original, shift: Int(-newValue))
-                                    self.encryptedText = newString
-                                    print(newString)
-                                }
-                                if shift == 3{
-                                    self.solved = true
-                                }else{
-                                    self.solved = false
-                                }
-                            }
-                            .frame(width: size.width / 4)
+                    ZStack {
+                        // Disable gestures around the slider
+
                         
+                        VStack(){
+                            Text("Shift:\(Int(shift))")
+                                .font(.system(size: 18, weight: .bold, design: .monospaced))
+                                .foregroundStyle(Color.white)
+                            Slider(value: $shift, in: 0...10,step:1)
+                                .controlSize(.extraLarge)
+                                .tint(solved ? Color.cyan : Color.red)
+                                .onChange(of: shift) {old,newValue in
+                                    if shift == 0{
+                                        self.encryptedText = original
+                                    }else{
+                                        let newString = caesar(text: original, shift: Int(-newValue))
+                                        self.encryptedText = newString
+                                        print(newString)
+                                    }
+                                    if shift == 3{
+                                        self.solved = true
+                                    }else{
+                                        self.solved = false
+                                    }
+                                }
+                                .frame(width: size.width / 4)
+                                .contentShape(Rectangle())
+                            
+                            
+                        }
+                        .contentShape(Rectangle())
+                      
                     }
+                 
                     if solved{
                         //                            Button{
                         //                                UIPasteboard.general.string = "5FC@WWDC"

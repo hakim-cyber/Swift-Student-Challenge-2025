@@ -53,7 +53,7 @@ struct Level1View: View {
             }
         
           
-            .modifier(MacBackgroundStyle(size:.init(width:size.width / 2,height: size.height / 1.5), movable: true,swipe: {
+            .modifier(MacBackgroundStyle(size:.init(width:size.width / 2,height: size.height / 1.5), movable: self.step != .encypt,swipe: {
                 
                     data.swipeWindow(.level1)
                 
