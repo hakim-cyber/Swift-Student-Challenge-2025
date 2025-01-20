@@ -8,6 +8,7 @@ import SwiftUI
 
 struct AboutCiphersView: View {
     @State private var selectedChiphre:ChiphreType = .caesarCipher
+    @State private var original: String = ""
     var body: some View {
         GeometryReader { geometry in
             
@@ -38,8 +39,19 @@ struct AboutCiphersView: View {
                         }
                         Spacer()
                     }
-                    MorseCodeDemoView()
-                        .frame(width: UIScreen.main.bounds.width / 2)
+                    Group{
+                        switch selectedChiphre {
+                        case .caesarCipher:
+                            CaesarChiphreDemoView(original: $original)
+                        case .atbashCipher:
+                            AtbashChiphreDemoView(original: $original)
+                        case .vigenèreCipher:
+                            VigenereChiphreDemoView(original: $original)
+                        case .morseCode:
+                            MorseCodeDemoView(original: $original)
+                        }
+                    }
+                    .frame(width: geometry.size.width / 2)
                 }
                 .fontDesign(.monospaced)
                 .padding()
@@ -51,7 +63,7 @@ struct AboutCiphersView: View {
     }
 }
 #Preview{
-    MorseCodeDemoView()
+    AboutCiphersView()
         .frame(width: UIScreen.main.bounds.width / 2)
 }
 
@@ -72,10 +84,10 @@ enum ChiphreType: String, CaseIterable {
 }
 
 struct CaesarChiphreDemoView:View {
-    @State private var original: String = ""
+    @Binding var original: String
     @State private var encryptedText: String = ""
     @State private var shift: Double = 0
-    let width:CGFloat
+   
     var body: some View {
         VStack(alignment:.center,spacing: 45){
             TextField("Enter Text to Encrypt",text: $original)
@@ -132,7 +144,9 @@ struct CaesarChiphreDemoView:View {
                
         }
         .padding()
-        .frame(width: self.width)
+        .onAppear {
+            self.encryptedText = caesarEncrypt(text: original, shift: Int(shift))
+        }
         
     }
     func caesarEncrypt(text: String, shift: Int) -> String {
@@ -166,7 +180,7 @@ struct CaesarChiphreDemoView:View {
 
 
 struct MorseCodeDemoView:View {
-    @State private var original = ""
+    @Binding var original: String
     @State private var encryptedText: String = ""
     @StateObject var morseManager = MorseCodeConverter()
     var body: some View {
@@ -198,6 +212,11 @@ struct MorseCodeDemoView:View {
                 
             
                
+        }
+        .padding()
+        .onAppear {
+            let morseText = morseManager.textToMorseCode(original)
+            self.encryptedText = morseText
         }
     }
         var morseCodeText:some View{
@@ -243,4 +262,144 @@ struct MorseCodeDemoView:View {
             // Removing the "/" character used to represent space between words in Morse code
             return morseCode.replacingOccurrences(of: "/", with: "")
         }
+}
+
+struct AtbashChiphreDemoView:View {
+    @Binding var original: String
+       @State private var encryptedText: String = ""
+      
+     
+    var body: some View {
+        VStack(alignment:.center,spacing: 45){
+            TextField("Enter Text to Encrypt",text: $original)
+                .font(.system(size: 18, weight: .black , design: .monospaced))
+                .foregroundStyle(Color.white)
+            
+            
+                .padding()
+            
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke( Color.cyan ,lineWidth: 3)
+                }
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+                .onChange(of: original) {old,newValue in
+                    let newtext = atbashCipherEncrypt(newValue)
+                    self.encryptedText = newtext
+                }
+            
+            HackerTextView(text: encryptedText, trigger: false,transition:.identity, speed: 0.01)
+            
+                .font(.system(size: 18, weight: .black , design: .monospaced))
+                .foregroundStyle(Color.white)
+            
+            
+                .padding()
+                .frame(maxWidth: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke( Color.cyan ,lineWidth: 3)
+                }
+            
+        }
+        .padding()
+        .onAppear {
+            let newtext = atbashCipherEncrypt(original)
+            self.encryptedText = newtext
+        }
+     
+    }
+    func atbashCipherEncrypt(_ text: String) -> String {
+        var encryptedText = ""
+        
+        for char in text {
+            if let asciiValue = char.asciiValue {
+                if char.isLowercase {
+                    // Encrypt lowercase letters (a-z)
+                    let newChar = Character(UnicodeScalar(219 - asciiValue)) // 219 = 'a' + 'z'
+                    encryptedText.append(newChar)
+                } else if char.isUppercase {
+                    // Encrypt uppercase letters (A-Z)
+                    let newChar = Character(UnicodeScalar(155 - asciiValue)) // 155 = 'A' + 'Z'
+                    encryptedText.append(newChar)
+                } else {
+                    // Non-alphabetic characters are added as-is
+                    encryptedText.append(char)
+                }
+            } else {
+                encryptedText.append(char)
+            }
+        }
+        
+        return encryptedText
+    }
+}
+struct VigenereChiphreDemoView:View {
+    @Binding var original: String
+       @State private var encryptedText: String = ""
+      
+    @State private var keyInput:String = ""
+    var body: some View {
+        VStack(alignment:.center,spacing: 45){
+            TextField("Enter Text to Encrypt",text: $original)
+                .font(.system(size: 18, weight: .black , design: .monospaced))
+                .foregroundStyle(Color.white)
+            
+                .padding()
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke( Color.cyan ,lineWidth: 3)
+                }
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+            TextField("Enter Key",text: $keyInput)
+                .font(.system(size: 18, weight: .black , design: .monospaced))
+                .foregroundStyle(Color.white)
+                .padding()
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke( Color.cyan ,lineWidth: 3)
+                }
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+               
+            
+            HackerTextView(text: encryptText(text: original,key: keyInput), trigger: false,transition:.identity, speed: 0.01)
+            
+                .font(.system(size: 18, weight: .black , design: .monospaced))
+                .foregroundStyle(Color.white)
+            
+            
+                .padding()
+                .frame(maxWidth: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke( Color.cyan ,lineWidth: 3)
+                }
+            
+        }
+        .padding()
+    
+        
+    }
+    func encryptText(text: String,key: String) -> String {
+        let newKey = key.trimAllSpace()
+         
+        
+        if !newKey.isEmpty{
+            let vigenere = Vigenere(key: newKey)
+            let newText =   vigenere.encrypt(plainText: text)
+            return newText
+        }else{
+           
+          return text
+        }
+    }
+    
 }
