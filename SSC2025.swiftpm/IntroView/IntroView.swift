@@ -20,6 +20,18 @@ struct SwiftUIView: View {
                                            }
                                           
                                        }
+                        Section(header:  Text("Game").font(.headline)) {
+                            NavigationLink(destination: StartGameView()) {
+                                               HStack {
+                                                   Image(systemName: "play.circle")
+                                                       .foregroundColor(.green)
+                                                       .font(.system(size: 24))
+                                                   Text("Start Game")
+                                                       .font(.headline)
+                                                       .foregroundColor(.primary)
+                                               }
+                                           }
+                                       }
                 }
                     .fontDesign(.monospaced)
             }
