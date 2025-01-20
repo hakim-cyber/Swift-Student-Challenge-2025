@@ -9,43 +9,50 @@ import SwiftUI
 struct AboutCiphersView: View {
     @State private var selectedChiphre:ChiphreType = .caesarCipher
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 15) {
-                Text("About Cipher Master")
-                    .font(.title2)
-                    .fontWeight(.black)
+        GeometryReader { geometry in
+            
+            
+            ScrollView {
+                VStack(alignment: .center, spacing: 15) {
+                    Text("About Cipher Master")
+                        .font(.title2)
+                        .fontWeight(.black)
                     
-                Text("""
+                    Text("""
                 - **Caesar Cipher**: Letters are shifted by a fixed number.
                 - **Atbash Cipher**: Letters are replaced with their reverse counterparts.
                 - **Vigenère Cipher**: A more complex cipher using a key phrase.
                 - **Morse Code**: A code consisting of dots and dashes.
                 """)
-                .bold()
-                .font(.title3)
-                
-                HStack{
-                    Spacer()
-                    Picker("Select Chipher", selection: $selectedChiphre) {
-                        ForEach(ChiphreType.allCases,id:\.rawValue){type in
-                            Text(type.description)
-                                .textCase(.uppercase)
-                            .tag(type)
+                    .bold()
+                    .font(.title3)
+                    
+                    HStack{
+                        Spacer()
+                        Picker("Select Chipher", selection: $selectedChiphre) {
+                            ForEach(ChiphreType.allCases,id:\.rawValue){type in
+                                Text(type.description)
+                                    .textCase(.uppercase)
+                                    .tag(type)
+                            }
                         }
+                        Spacer()
                     }
-                    Spacer()
+                    MorseCodeDemoView()
+                        .frame(width: UIScreen.main.bounds.width / 2)
                 }
-               
+                .fontDesign(.monospaced)
+                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .center)
             }
-            .fontDesign(.monospaced)
-            .padding()
-        
+           
         }
        
     }
 }
 #Preview{
-    CaesarChiphreDemoView(width:UIScreen.main.bounds.width / 2.5)
+    MorseCodeDemoView()
+        .frame(width: UIScreen.main.bounds.width / 2)
 }
 
 enum ChiphreType: String, CaseIterable {
@@ -155,56 +162,85 @@ struct CaesarChiphreDemoView:View {
         return String(shiftedText)
     }
 }
-/*
- HackerTextView(text: encryptedText, trigger: false,transition:.identity, speed: 0.01)
- 
-     .font(.system(size: 18, weight: solved ? .black : .bold, design: .monospaced))
-     .foregroundStyle(Color.white)
- 
- 
-     .padding()
- 
-     .clipShape(RoundedRectangle(cornerRadius: 10))
-     .overlay{
-         RoundedRectangle(cornerRadius: 10)
-             .stroke(solved ? Color.cyan : Color.red,lineWidth: 3)
-     }
- */
-/*
- ZStack {
-     // Disable gestures around the slider
 
-     
-     VStack(){
-         Text("Shift:\(Int(shift))")
-             .font(.system(size: 18, weight: .bold, design: .monospaced))
-             .foregroundStyle(Color.white)
-         Slider(value: $shift, in: 0...10,step:1)
-             .controlSize(.extraLarge)
-             .tint(solved ? Color.cyan : Color.red)
-             .onChange(of: shift) {old,newValue in
-                 if shift == 0{
-                     self.encryptedText = original
-                 }else{
-                     let newString = caesar(text: original, shift: Int(-newValue))
-                     self.encryptedText = newString
-                     print(newString)
-                 }
-                 if shift == 3{
-                     self.solved = true
-                 }else{
-                     self.solved = false
-                 }
-             }
-             .frame(width: size.width / 4)
-             .contentShape(Rectangle())
-         
-         
-     }
-     .contentShape(Rectangle())
-   
- }
- */
-/*
 
- */
+
+struct MorseCodeDemoView:View {
+    @State private var original = ""
+    @State private var encryptedText: String = ""
+    @StateObject var morseManager = MorseCodeConverter()
+    var body: some View {
+        VStack(alignment:.center,spacing: 45){
+            TextField("Enter Text to Encrypt",text: $original)
+                .font(.system(size: 18, weight: .black , design: .monospaced))
+                .foregroundStyle(Color.white)
+            
+            
+                .padding()
+            
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke( Color.cyan ,lineWidth: 3)
+                }
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+                .onChange(of: original) { oldValue, newValue in
+                    let morseText = morseManager.textToMorseCode(newValue)
+                    self.encryptedText = morseText
+                }
+            
+               
+                    morseCodeText
+                   
+                    
+                    
+                
+            
+               
+        }
+    }
+        var morseCodeText:some View{
+            HStack{
+                            if !self.encryptedText.isEmpty{
+                                if morseManager.isPlaying{
+                                    Image(systemName: "speaker.wave.3.fill")
+                                        .foregroundStyle(Color.cyan)
+                                }else{
+                                    Image(systemName: "speaker.fill")
+                                        .foregroundStyle(Color.cyan)
+                                }
+                            }
+                            Text(encryptedText)
+                            Spacer()
+                        }
+                            .font(.system(size: 18, weight:  .black, design: .monospaced))
+                                                       .foregroundStyle(Color.white)
+                                                       .lineSpacing(20)
+                                                       .multilineTextAlignment(.leading)
+                                                       .lineLimit(nil) // Allow unlimited lines
+                                                                       .fixedSize(horizontal: false, vertical: true)
+                                                       .padding()
+                                                       .frame(maxWidth: .infinity)
+                                                       .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                       .overlay{
+                                                           RoundedRectangle(cornerRadius: 10)
+                                                               .stroke(Color.cyan,lineWidth: 3)
+                                                       }
+                                                       .contentShape(Rectangle())
+                                                       .onTapGesture {
+                                                           // make sound of morse code
+                                                           soundofMorseCode()
+                                                       }
+        }
+    func soundofMorseCode(){
+      
+        morseManager.playMorseCode(self.removeWordSpace(from: encryptedText)){
+            
+        }
+    }
+    func removeWordSpace(from morseCode: String) -> String {
+            // Removing the "/" character used to represent space between words in Morse code
+            return morseCode.replacingOccurrences(of: "/", with: "")
+        }
+}

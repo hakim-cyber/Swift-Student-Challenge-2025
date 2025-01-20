@@ -10,6 +10,35 @@ import AVFoundation
 class MorseCodeConverter:ObservableObject {
     private var audioPlayer: AVAudioPlayer?
     @Published var isPlaying = false
+    
+    private let morseCodeDictionary: [Character: String] = [
+            "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.",
+            "G": "--.", "H": "....", "I": "..", "J": ".---", "K": "-.-", "L": ".-..",
+            "M": "--", "N": "-.", "O": "---", "P": ".--.", "Q": "--.-", "R": ".-.",
+            "S": "...", "T": "-", "U": "..-", "V": "...-", "W": ".--", "X": "-..-",
+            "Y": "-.--", "Z": "--..",
+            
+            "1": ".----", "2": "..---", "3": "...--", "4": "....-", "5": ".....",
+            "6": "-....", "7": "--...", "8": "---..", "9": "----.", "0": "-----",
+            
+            ".": ".-.-.-", ",": "--..--", "?": "..--..", "'": ".----.", "!": "-.-.--",
+            "/": "-..-.", "(": "-.--.", ")": "-.--.-", "&": ".-...", ":": "---...",
+            ";": "-.-.-.", "=": "-...-", "-": "-....-", "_": "..--.-", "+": ".-.-.",
+            "$": "...-..-", "@": ".--.-.", " ": "/" // Space between words is represented by '/'
+        ]
+    func textToMorseCode(_ text: String) -> String {
+            let uppercasedText = text.uppercased()
+            var morseCode = ""
+            
+            for char in uppercasedText {
+                if let code = morseCodeDictionary[char] {
+                    morseCode += code + " " // Add a space between Morse characters
+                }
+            }
+            
+            return morseCode.trimmingCharacters(in: .whitespaces)
+        }
+        
     // Function to play Morse code sounds
     func playMorseCode(_ morseCode: String, finish: @escaping () -> Void) {
             if isPlaying {
