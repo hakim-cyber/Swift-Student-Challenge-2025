@@ -30,7 +30,7 @@ struct MacToolbar: View {
                         Button("Log Out"){
                             self.data.startSteps = .intro
                         }
-                        .disabled(true)
+                       
                             
                         
                     }label:{
@@ -52,7 +52,7 @@ struct MacToolbar: View {
                         Button("Log Out"){
                             self.data.startSteps = .intro
                         }
-                        .disabled(true)
+                       
                             
                     }label:{
                         
