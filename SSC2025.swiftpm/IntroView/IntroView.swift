@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct IntroView: View {
+    var start:()->Void
     var body: some View {
         NavigationView {
                     List {
@@ -21,7 +22,7 @@ struct SwiftUIView: View {
                                           
                                        }
                         Section(header:  Text("Game").font(.headline)) {
-                            NavigationLink(destination: StartGameView()) {
+                            NavigationLink(destination: StartGameView(start: start)) {
                                                HStack {
                                                    Image(systemName: "play.circle")
                                                        .foregroundColor(.green)
@@ -39,5 +40,7 @@ struct SwiftUIView: View {
 }
 
 #Preview {
-    SwiftUIView()
+    IntroView{
+        
+    }
 }

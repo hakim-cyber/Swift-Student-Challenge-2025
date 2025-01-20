@@ -24,6 +24,12 @@ struct StartView: View {
                    
             case .desktopView:
                 DesktopView()
+            case .intro:
+                IntroView {
+                    withAnimation{
+                        data.startSteps = .helloView
+                    }
+                }
             }
             
         }

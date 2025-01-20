@@ -13,7 +13,7 @@ class ProjectData: ObservableObject {
     
     
     @Published  var userName: String = ""
-    @Published var startSteps : StartSteps = .helloView
+    @Published var startSteps : StartSteps = .intro
     @Published var gameSteps : GameSteps = .openMessagesApp{
         didSet {
             handleStepsChange()
@@ -247,7 +247,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
 
 
 enum StartSteps:String{
-    case helloView,nameView,desktopView
+    case intro,helloView,nameView,desktopView
 }
 
 enum GameSteps:Int,CaseIterable{

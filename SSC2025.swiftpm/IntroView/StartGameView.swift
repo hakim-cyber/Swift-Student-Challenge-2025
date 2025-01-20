@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartGameView: View {
-    
+    var start: () -> Void
         var body: some View {
             VStack(spacing: 20) {
                 Text("🕵️ Tips for Cipher Master")
@@ -29,6 +29,7 @@ struct StartGameView: View {
                 
                 Button(action: {
                     // Navigate to the next view (Game Start)
+                    start()
                 }) {
                     Text("Start the Game")
                         .font(.headline)
@@ -48,5 +49,7 @@ struct StartGameView: View {
 }
 
 #Preview {
-    StartGameView()
+    StartGameView{
+        
+    }
 }
