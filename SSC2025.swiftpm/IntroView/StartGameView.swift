@@ -28,7 +28,7 @@ struct StartGameView: View {
                 Spacer()
                 
                 Button(action: {
-                    // Navigate to the next view (Game Start)
+                   
                     start()
                 }) {
                     Text("Start the Game")

@@ -86,7 +86,7 @@ struct BottomBarView: View {
     func windowButton(window: WindowType, label: @escaping () -> some View) -> some View {
         
         
-        // Skip creating button for default case
+       
         return AnyView(
             Button(action: {
                 

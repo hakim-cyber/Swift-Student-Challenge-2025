@@ -19,7 +19,7 @@ struct AudioPlayerForView: ViewModifier {
             .onAppear(perform: {
                 if trigger {
                     playSound()
-                    // Reset the trigger to false after playing the sound
+                   
                     DispatchQueue.main.async {
                         trigger = false
                     }
@@ -28,7 +28,7 @@ struct AudioPlayerForView: ViewModifier {
             .onChange(of: trigger) { _, newValue in
                 if newValue {
                     playSound()
-                    // Reset the trigger to false after playing the sound
+                   
                     DispatchQueue.main.async {
                         trigger = false
                     }

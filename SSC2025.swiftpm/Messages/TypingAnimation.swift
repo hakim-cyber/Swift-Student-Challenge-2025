@@ -17,7 +17,7 @@ struct TypingAnimation: View {
                     Circle()
                         .fill(Color.gray)
                         .frame(width: 6, height: 6)
-                        .scaleEffect(isAnimating ? 1.2 : 1.0) // Scale effect animation
+                        .scaleEffect(isAnimating ? 1.2 : 1.0)
                         .animation(
                             .easeInOut(duration: 0.5)
                                 .repeatForever()
@@ -33,10 +33,10 @@ struct TypingAnimation: View {
                     .fill(Color(uiColor: .systemGray4))
             )
             .onAppear {
-                isAnimating = false // Starts the animation when the view appears
+                isAnimating = false
             }
 
-            Spacer() // Keeps the typing animation aligned to the left
+            Spacer() 
         }
         
         .padding(.horizontal)

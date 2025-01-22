@@ -127,7 +127,7 @@ struct MessageViewStruct:Identifiable,Equatable{
     var congratulated:Bool = false
     
     static func == (lhs: MessageViewStruct, rhs: MessageViewStruct) -> Bool {
-           // Compare only meaningful properties, excluding the `onTap` closure
+  
            lhs.id == rhs.id &&
            lhs.text == rhs.text &&
            lhs.isIncoming == rhs.isIncoming &&

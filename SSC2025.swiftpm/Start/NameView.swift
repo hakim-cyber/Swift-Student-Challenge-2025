@@ -30,7 +30,7 @@ struct NameView: View {
                 VStack {
                           
                            
-                           // TextField with rounded rectangle and ultra-thin background
+                           
                     HStack(spacing:0){
                         TextField("Enter your name", text: $data.userName)
                             .padding()
@@ -55,7 +55,7 @@ struct NameView: View {
                             .padding(.trailing,5)
                             .background(
                                 RoundedRectangle(cornerRadius: 55)
-                                    .fill(.ultraThinMaterial) // Ultra-thin background effect
+                                    .fill(.ultraThinMaterial)
                                     .shadow(color: Color.primary.opacity(0.5), radius: 5, x: 0, y: 2)
                             )
                             .onSubmit {
@@ -65,7 +65,7 @@ struct NameView: View {
                        
                     }
                            
-                           // Note below the TextField
+                          
                            Text("Default name will be 'User'")
                                .foregroundColor(.white)
                                .padding(.top, 4)
@@ -90,12 +90,12 @@ struct NameView: View {
 extension String{
     static func formattedDate(from date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMMM d" // "EEEE" = full weekday name, "MMMM" = full month name, "d" = day
+        formatter.dateFormat = "EEEE, MMMM d"
         return formatter.string(from: date)
     }
     static  func formattedTime24Hour(from date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm" // 24-hour format
+        formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
     }
 

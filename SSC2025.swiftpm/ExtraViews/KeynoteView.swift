@@ -27,7 +27,7 @@ struct KeynoteView: View {
             let size = geo.size
             HStack(spacing: 0) {
                 
-                // Keynote Sidebar
+               
                 
                 ScrollView(.vertical){
                     VStack(spacing:20){

@@ -24,7 +24,7 @@ class MorseCodeConverter:ObservableObject {
             ".": ".-.-.-", ",": "--..--", "?": "..--..", "'": ".----.", "!": "-.-.--",
             "/": "-..-.", "(": "-.--.", ")": "-.--.-", "&": ".-...", ":": "---...",
             ";": "-.-.-.", "=": "-...-", "-": "-....-", "_": "..--.-", "+": ".-.-.",
-            "$": "...-..-", "@": ".--.-.", " ": "/" // Space between words is represented by '/'
+            "$": "...-..-", "@": ".--.-.", " ": "/"
         ]
     func textToMorseCode(_ text: String) -> String {
             let uppercasedText = text.uppercased()
@@ -32,43 +32,43 @@ class MorseCodeConverter:ObservableObject {
             
             for char in uppercasedText {
                 if let code = morseCodeDictionary[char] {
-                    morseCode += code + " " // Add a space between Morse characters
+                    morseCode += code + " "
                 }
             }
             
             return morseCode.trimmingCharacters(in: .whitespaces)
         }
         
-    // Function to play Morse code sounds
+   
     func playMorseCode(_ morseCode: String, finish: @escaping () -> Void) {
             if isPlaying {
-                stopSound() // Stop the sound if it's already playing
+                stopSound()
                 finish()
                 return
             }
 
-            isPlaying = true // Set playing flag to true
+            isPlaying = true
             
             let morseCharacters = morseCode.split(separator: " ")
             
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.7) {
                 for (index, symbol) in morseCharacters.enumerated() {
-                    if !self.isPlaying { break } // Stop if playback is stopped
+                    if !self.isPlaying { break }
                     
-                    // Play the sound for the symbol
+                  
                     for morseSymbol in symbol {
                         if !self.isPlaying { break }
                         switch morseSymbol {
                         case ".":
-                            self.playDotSound() // Play short sound for dot
+                            self.playDotSound()
                         case "-":
-                            self.playDashSound() // Play long sound for dash
+                            self.playDashSound()
                         default:
                             continue
                         }
                     }
 
-                    // Add a short pause between letters
+                    
                     if index < morseCharacters.count - 1 {
                         self.playWordSpaceSound()
                     }
@@ -82,27 +82,27 @@ class MorseCodeConverter:ObservableObject {
             }
         }
     
-    // Function to play the sound for a dot (short beep)
+   
     private func playDotSound() {
-        playSound(for: 0.2) // Short sound duration
+        playSound(for: 0.2)
     }
     
-    // Function to play the sound for a dash (long beep)
+    
     private func playDashSound() {
-        playSound(for: 0.6) // Longer sound duration
+        playSound(for: 0.6)
     }
     
-    // Function to play the sound for a letter space (short silence)
+    
     private func playLetterSpaceSound() {
-        Thread.sleep(forTimeInterval: 0.3) // Short pause between letters
+        Thread.sleep(forTimeInterval: 0.3)
     }
     
-    // Function to play the sound for a word space (long silence)
+  
     private func playWordSpaceSound() {
-        Thread.sleep(forTimeInterval: 0.7) // Longer pause between words
+        Thread.sleep(forTimeInterval: 0.7)
     }
     
-    // Function to play sound with a specific duration
+   
     private func playSound(for duration: TimeInterval) {
         guard let soundURL = Bundle.main.url(forResource: "beep", withExtension: "mp3") else {
             print("Sound file not found.")
@@ -113,11 +113,10 @@ class MorseCodeConverter:ObservableObject {
             
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.play()
-            // Pause for the duration of the sound
+            
             Thread.sleep(forTimeInterval: duration)
             audioPlayer?.stop()
-        } catch {
-//            print("Error playing sound: \(error)")
+        } catch {           
         }
     }
     private func stopSound() {

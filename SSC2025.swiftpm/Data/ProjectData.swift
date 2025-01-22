@@ -49,12 +49,12 @@ class ProjectData: ObservableObject {
     @Published private var typingSpeed: TimeInterval = 0.01
    
     
-    // Time per character
+  
     
     func bringToFront(_ window: WindowType) {
         if let index = openWindows.firstIndex(of: window) {
             openWindows.remove(at: index)
-            openWindows.append(window) // Move the window to the end
+            openWindows.append(window)
         }
     }
     func swipeWindow(_ window: WindowType) {
@@ -89,7 +89,7 @@ class ProjectData: ObservableObject {
     func addMessagesToQueue(_ newMessages: [MessageViewStruct]) {
         messageQueue.append(contentsOf: newMessages)
         
-        // Start the timer if it's not already running
+        
         if timer == nil {
             processNextMessage()
         }
@@ -97,21 +97,21 @@ class ProjectData: ObservableObject {
 
     private func processNextMessage() {
         guard !messageQueue.isEmpty else {
-            // Stop the timer when all messages are sent
+           
             timer?.invalidate()
             timer = nil
             
             return
         }
       
-        // Get the next message from the queue
+       
         let nextMessage = messageQueue.removeFirst()
         messages.append(nextMessage)
         
-        // Calculate the delay based on the length of the message text
+
         let delay = TimeInterval(nextMessage.text.count) * typingSpeed
         
-        // Schedule the next message after the delay
+
         timer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { _ in
             self.processNextMessage()
         }
@@ -137,7 +137,7 @@ class ProjectData: ObservableObject {
             let text1 = "Here’s the unlocked keynote. What’s next?"
             let message1 = MessageViewStruct(text: text1, isIncoming: false)
             let message2 = MessageViewStruct(text: "Keynote", isIncoming: false,messageStyle:.file(Image("keynote"),"Keynote Document - 219 KB"),onTap: {
-                // open keynote showing file
+               
                 self.openWindow(.mockKeynote)
              })
            
@@ -170,7 +170,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
             
         case .level3:
           let message1 = MessageViewStruct(text: "Attendee Database", isIncoming: false,messageStyle:.file(Image(systemName: "text.document.fill"),"Attendee Database.txt - 100 KB"),onTap: {
-              // open attendee database showing file
+             
               self.openWindow(.mockAttendeeDatabase)
           })
             
@@ -211,7 +211,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
             let message1 = MessageViewStruct(text: "You’re connected to Wi-Fi!", isIncoming: true,messageStyle: .congratulations)
             let message2 = MessageViewStruct(text: "Now, try opening the WWDC live stream link again. It’s time to witness what you’ve worked so hard to save!", isIncoming: true)
             let message3 = MessageViewStruct(text: "WWDC Live Stream", isIncoming: true,messageStyle:.link(Image(systemName: "safari.fill"),"https://developer.apple.com/wwdc/2025"),onTap: {
-                // open wwdc animation and final
+                
                
                     self.showWWDCAnimation = true
                
@@ -219,7 +219,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
             })
             self.addMessagesToQueue([message1, message2, message3])
         case .watchedAnimation:
-            // congratulate , say him to get hiz prizes and say your mission finished
+           
             let message1 = MessageViewStruct(text: "Amazing job, Cipher Master! You’ve saved WWDC! 🎉", isIncoming: true, messageStyle: .congratulations)
                    let message2 = MessageViewStruct(
                        text: "Head to the Prizes folder on your desktop for your rewards.",
@@ -239,7 +239,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
             if gameSteps.rawValue < lastStep.rawValue {
                 DispatchQueue.main.async {
                     self.gameSteps = GameSteps(rawValue: self.gameSteps.rawValue + 1) ?? self.gameSteps
-                    self.finishGameStep() // Continue until reaching the last step
+                    self.finishGameStep() 
                 }
             }
         }

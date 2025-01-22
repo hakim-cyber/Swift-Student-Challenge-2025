@@ -31,7 +31,7 @@ let attendees = [
     Attendee(name: "Harry Potter", role: "Senior Software Engineer", company: "Magic Corp", email: "harry@magiccorp.com"),
     Attendee(name: "Clark Kent", role: "Journalist", company: "Daily Planet", email: "clark@dailyplanet.com"),
     
-    // Random Additional Attendees
+   
     Attendee(name: "Zara Green", role: "UX Designer", company: "GreenTech", email: "zara@greentech.com"),
     Attendee(name: "Oscar Wilde", role: "Author", company: "Literary Works", email: "oscar@literary.com"),
     Attendee(name: "Ella Fitzgerald", role: "Jazz Musician", company: "MusicWorld", email: "ella@musicworld.com"),

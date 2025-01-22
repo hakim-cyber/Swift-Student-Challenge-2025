@@ -86,8 +86,8 @@ struct Level2MainDecryptView: View {
                 }
                 
             }
-            .frame(maxWidth: .infinity) // Ensure it doesn't exceed the screen width
-            .fixedSize(horizontal: false, vertical: true) // Allow vertical expansion if needed
+            .frame(maxWidth: .infinity)
+            .fixedSize(horizontal: false, vertical: true)
             .padding(40)
             Spacer()
         }
@@ -115,7 +115,7 @@ struct Level2MainDecryptView: View {
         "U": "..-", "V": "...-", "W": ".--", "X": "-..-", "Y": "-.--",
         "Z": "--..", "0": "-----", "1": ".----", "2": "..---",
         "3": "...--", "4": "....-", "5": ".....", "6": "-....",
-        "7": "--...", "8": "---..", "9": "----.", " ": " " // Space between words
+        "7": "--...", "8": "---..", "9": "----.", " ": " "
     ]
 
     
@@ -183,14 +183,14 @@ struct Level2MainDecryptView: View {
                     print("Character ID: \(character.id)")
                     
                     if character.value == droppedString {
-                        // Correct match: Update arrays
+                        
                         self.updateArraysAfterDrop(character: character)
                     } else {
-                        // Incorrect match: Animate view
+                       
                         self.animateView()
                     }
                     
-                    // Reset dragging character
+                    
                     self.draggingCharacter = nil
                 }
             }
@@ -344,12 +344,12 @@ struct Level2MainDecryptView: View {
     func rectangleWithProgress()->some View{
         GeometryReader { geometry in
                     ZStack(alignment: .leading) {
-                        // Background Divider
+                       
                         Rectangle()
                             .fill(Color.gray.opacity(0.3))
                             .frame(height: 4)
 
-                        // Progress Bar
+                       
                         Rectangle()
                             .fill(Color.green)
                             .frame(width: geometry.size.width * progress, height: 4)
@@ -373,7 +373,7 @@ struct Level2MainDecryptView: View {
                                        .foregroundStyle(Color.white)
                                        .lineSpacing(20)
                                        .multilineTextAlignment(.leading)
-                                       .lineLimit(nil) // Allow unlimited lines
+                                       .lineLimit(nil) 
                                                        .fixedSize(horizontal: false, vertical: true)
                                        .padding()
                                    
@@ -384,7 +384,7 @@ struct Level2MainDecryptView: View {
                                        }
                                        .contentShape(Rectangle())
                                        .onTapGesture {
-                                           // make sound of morse code
+                                          
                                            soundofMorseCode()
                                        }
     }

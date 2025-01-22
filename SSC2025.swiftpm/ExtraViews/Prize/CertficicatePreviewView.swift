@@ -32,7 +32,7 @@ struct CertficicatePreviewView: View {
             let size = geo.size
             HStack(spacing: 0) {
                 
-                // Keynote Sidebar
+               
                 
                 ScrollView(.vertical){
                     VStack(spacing:20){
@@ -43,7 +43,7 @@ struct CertficicatePreviewView: View {
                                 self.selectedStep = count
                             } label: {
                                 VStack {
-                                    //size.width * 0.15 - 35
+                                   
                                     switch count{
                                     case 0:
                                         CertificateFrontView(size: size.width * 0.15 - 35)

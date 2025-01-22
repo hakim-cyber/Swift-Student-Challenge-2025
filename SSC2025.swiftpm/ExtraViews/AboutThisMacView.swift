@@ -11,15 +11,15 @@ struct AboutThisMacView: View {
   
     var body: some View {
             VStack(spacing: 16) {
-                // MacBook Image
-                Image(systemName: "macbook.gen2") // Replace with a custom image if needed
+                
+                Image(systemName: "macbook.gen2")
                     .resizable()
                     .scaledToFit()
-                    // Adjust as per your needs
+                   
                     .padding(.horizontal,40)
                     .foregroundColor(Color.blue)
 
-                // MacBook Model Details
+               
                 VStack(spacing: 4) {
                     Text("MacBook Pro")
                         .font(.title)
@@ -29,7 +29,7 @@ struct AboutThisMacView: View {
                         .font(.subheadline)
                 }
 
-                // System Information
+               
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text("Chip")
@@ -61,7 +61,7 @@ struct AboutThisMacView: View {
                 .background(Color(uiColor: .systemGray6))
                 .cornerRadius(12)
 
-                // Button
+               
                 Button(action: {}) {
                     Text("More Info...")
                         .font(.callout)
@@ -75,7 +75,7 @@ struct AboutThisMacView: View {
                         .fixedSize()
                 }
 
-                // Footer
+                
                 Text("Regulatory Certification\n™ and © 1983–2024 Apple Inc.\nAll Rights Reserved.")
                     .font(.footnote)
                     .foregroundColor(.gray)

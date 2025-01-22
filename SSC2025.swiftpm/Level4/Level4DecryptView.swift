@@ -238,7 +238,7 @@ struct Level4DecryptView: View {
             .scaleEffect(playSound ? 1.1 : 1.0)
             .animation(.spring(), value: playSound)
             .padding(.top, 20)
-            .contentShape(Rectangle())// Animation for the scale effect
+            .contentShape(Rectangle())
         }
        
        

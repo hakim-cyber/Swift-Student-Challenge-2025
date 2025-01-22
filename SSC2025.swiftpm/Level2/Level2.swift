@@ -31,7 +31,7 @@ struct Level2: View {
                
                 
             }){
-               // close it if finished the game
+              
                
                     self.data.closeWindow(.level2)
                 

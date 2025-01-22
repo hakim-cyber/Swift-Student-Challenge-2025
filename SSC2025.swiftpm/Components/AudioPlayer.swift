@@ -37,13 +37,13 @@ struct AudioPlayer2: ViewModifier {
         }
         
         do {
-            // If there's an existing audio player, stop it before playing the new sound
+           
             audioPlayer?.stop()
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
             
-            // Start a timer to stop the audio once it finishes
+          
             startAudioTimer()
         } catch {
             print("Error playing sound: \(error.localizedDescription)")
@@ -59,10 +59,10 @@ struct AudioPlayer2: ViewModifier {
     }
 
     private func startAudioTimer() {
-        // Invalidate any existing timer
+       
         audioTimer?.invalidate()
         
-        // Create a new timer to stop the audio once it's finished
+        
         audioTimer = Timer.scheduledTimer(withTimeInterval: audioPlayer?.duration ?? 0, repeats: false) { _ in
            
             stopSound()

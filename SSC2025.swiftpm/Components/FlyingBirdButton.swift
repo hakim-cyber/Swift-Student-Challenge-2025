@@ -18,36 +18,12 @@ struct FlyingBirdButton: View {
                     isFlying.toggle()
                                        action()
                 }
-//                Button(action: {
-//                    // Trigger the flying animation
-//                    isFlying.toggle()
-//                    action()
-//                }) {
-//                    HStack (spacing:10){
-//                        if !isFlying{
-//                            Image(systemName: "airplane")
-//                                .font(.system(size: 18, weight: .bold, design: .default))
-//                                .foregroundStyle(Color.white)
-//                                .multilineTextAlignment(.leading)
-//                                .animation(.bouncy, value: isFlying)
-//                                .transition(.identity)
-//                        }
-//                        Text("Send File")
-//                            .font(.system(size: 18, weight: .bold, design: .default))
-//                            .foregroundStyle(Color.white)
-//                            .multilineTextAlignment(.leading)
-//                    }
-//                    .padding(8)
-//                    .padding(.horizontal, 40)
-//                    .background(Color.cyan)
-//                    .clipShape(RoundedRectangle(cornerRadius: 8))
-//                }
-//                .transition(.scale)
+
             }
             
             if isFlying {
                 BirdAnimationView {
-                    // Reset the button and bird after flying animation completes
+               
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         isFlying = false
                         showButton = true
@@ -77,12 +53,12 @@ struct BirdAnimationView: View {
                    .rotation3DEffect(.degrees(rotationAngle), axis: (x: 1, y: 0, z: 0))
                    .onAppear {
                        withAnimation(.bouncy(duration: 2.5)) {
-                           // Move the plane across the screen
+                           
                            flyOffset = CGSize(width: UIScreen.main.bounds.width, height: -UIScreen.main.bounds.height / 3)
-                           rotationAngle = -30 // Slight tilt
+                           rotationAngle = -30 
                        }
 
-                       // Reset after animation completes
+                      
                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                            flyOffset = .zero
                            rotationAngle = 0

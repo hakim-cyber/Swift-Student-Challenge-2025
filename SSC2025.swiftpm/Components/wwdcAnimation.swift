@@ -176,7 +176,7 @@ struct WWDCAnimationView: View {
                 
                 ZStack{
                  
-                    // Background slides
+                   
                     VStack{
                         Spacer()
                         wwdc2025
@@ -186,7 +186,7 @@ struct WWDCAnimationView: View {
                      
                     
                    
-                    // Steve Jobs Avatar
+                   
                     ZStack{
                        
                        
@@ -252,7 +252,7 @@ struct WWDCAnimationView: View {
             case .thanks2:
                 ZStack{
                  
-                    // Background slides
+                   
                     VStack{
                         Spacer()
                         wwdc2025
@@ -262,7 +262,7 @@ struct WWDCAnimationView: View {
                      
                     
                    
-                    // Steve Jobs Avatar
+                    
                     ZStack{
                        
                        
@@ -309,8 +309,7 @@ struct WWDCAnimationView: View {
         .audioPlayer2(audioName: "cinematic2", audioExtension: "mp3", trigger: .constant(self.step != .none))
         .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
                        
-                   // Give a moment for the screen boundaries to change after
-                   // the device is rotated
+                  
                    Task { @MainActor in
                        try await Task.sleep(for: .seconds(0.001))
                        withAnimation{

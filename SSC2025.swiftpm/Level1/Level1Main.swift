@@ -58,7 +58,7 @@ struct Level1Main: View {
                                 .stroke(solved ? Color.cyan : Color.red,lineWidth: 3)
                         }
                     ZStack {
-                        // Disable gestures around the slider
+                        
 
                         
                         VStack(){
@@ -92,22 +92,7 @@ struct Level1Main: View {
                     }
                  
                     if solved{
-                        //                            Button{
-                        //                                UIPasteboard.general.string = "5FC@WWDC"
-                        //                                next()
-                        //                            }label: {
-                        //                                HStack{
-                        //                                    Text("Copy Password")
-                        //                                        .font(.system(size: 18, weight: .bold, design: .default))
-                        //                                        .foregroundStyle(Color.white)
-                        //                                        .multilineTextAlignment(.leading)
-                        //                                }
-                        //                                .padding(8)
-                        //                                .padding(.horizontal,40)
-                        //                                .background(Color.cyan)
-                        //                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                        //
-                        //                            }
+                   
                         AnimatedButtonMeshGradient(text: "Copy Password", image: Image(systemName: "document.on.document.fill"), action: {
                             UIPasteboard.general.string = "5FC@WWDC"
                             next()
@@ -170,28 +155,27 @@ struct Level1Main: View {
         }
     }
     func caesar(text: String, shift: Int) -> String {
-        // Normalize the shift to be within the range of 0-25
-        // Helper function to shift a single character
+        
         func shiftCharacter(_ char: Character, by shift: Int) -> Character {
-            guard let asciiValue = char.asciiValue else { return char } // Non-alphabetic characters are returned as-is
+            guard let asciiValue = char.asciiValue else { return char }
             
             let isUppercase = char.isUppercase
-            let baseAscii: UInt8 = isUppercase ? 65 : 97 // 'A' or 'a'
+            let baseAscii: UInt8 = isUppercase ? 65 : 97
             let alphabetCount = 26
             
-            // Normalize shift to a positive value within range
+          
             let effectiveShift = (shift % alphabetCount + alphabetCount) % alphabetCount
             
-            // Calculate the new ASCII value
+            
             if char.isLetter {
                 let newAsciiValue = baseAscii + (asciiValue - baseAscii + UInt8(effectiveShift)) % UInt8(alphabetCount)
                 return Character(UnicodeScalar(newAsciiValue))
             }
             
-            return char // Return non-alphabetic characters unchanged
+            return char
         }
         
-        // Process each character in the text
+        
         let shiftedText = text.map { shiftCharacter($0, by: shift) }
         return String(shiftedText)
     }

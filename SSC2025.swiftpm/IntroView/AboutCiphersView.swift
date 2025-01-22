@@ -116,12 +116,12 @@ struct CaesarChiphreDemoView:View {
                     .tint( Color.cyan)
                     .onChange(of: shift) { oldValue, newValue in
                                 if newValue == 0 {
-                                    self.encryptedText = original // Reset to original if shift is 0
+                                    self.encryptedText = original
                                 } else {
-                                    // Encrypt using the caesarEncrypt function (negative shift for encryption)
+                                  
                                     let newString = caesarEncrypt(text: original, shift: Int(newValue))
                                     self.encryptedText = newString
-                                    print(newString) // Print the encrypted string to the console
+                                    print(newString)
                                 }
                             }
                 
@@ -150,28 +150,27 @@ struct CaesarChiphreDemoView:View {
         
     }
     func caesarEncrypt(text: String, shift: Int) -> String {
-        // Normalize the shift to be within the range of 0-25
-        // Helper function to shift a single character
+      
         func shiftCharacter(_ char: Character, by shift: Int) -> Character {
-            guard let asciiValue = char.asciiValue else { return char } // Non-alphabetic characters are returned as-is
+            guard let asciiValue = char.asciiValue else { return char }
             
             let isUppercase = char.isUppercase
-            let baseAscii: UInt8 = isUppercase ? 65 : 97 // 'A' or 'a'
+            let baseAscii: UInt8 = isUppercase ? 65 : 97
             let alphabetCount = 26
             
-            // Normalize shift to a positive value within range
+           
             let effectiveShift = (shift % alphabetCount + alphabetCount) % alphabetCount
             
-            // Calculate the new ASCII value
+            
             if char.isLetter {
                 let newAsciiValue = baseAscii + (asciiValue - baseAscii + UInt8(effectiveShift)) % UInt8(alphabetCount)
                 return Character(UnicodeScalar(newAsciiValue))
             }
             
-            return char // Return non-alphabetic characters unchanged
+            return char
         }
         
-        // Process each character in the text
+        
         let shiftedText = text.map { shiftCharacter($0, by: shift) }
         return String(shiftedText)
     }
@@ -237,7 +236,7 @@ struct MorseCodeDemoView:View {
                                                        .foregroundStyle(Color.white)
                                                        .lineSpacing(20)
                                                        .multilineTextAlignment(.leading)
-                                                       .lineLimit(nil) // Allow unlimited lines
+                                                       .lineLimit(nil) 
                                                                        .fixedSize(horizontal: false, vertical: true)
                                                        .padding()
                                                        .frame(maxWidth: .infinity)
@@ -248,7 +247,7 @@ struct MorseCodeDemoView:View {
                                                        }
                                                        .contentShape(Rectangle())
                                                        .onTapGesture {
-                                                           // make sound of morse code
+                                                           
                                                            soundofMorseCode()
                                                        }
         }
@@ -259,7 +258,7 @@ struct MorseCodeDemoView:View {
         }
     }
     func removeWordSpace(from morseCode: String) -> String {
-            // Removing the "/" character used to represent space between words in Morse code
+            
             return morseCode.replacingOccurrences(of: "/", with: "")
         }
 }
@@ -318,15 +317,15 @@ struct AtbashChiphreDemoView:View {
         for char in text {
             if let asciiValue = char.asciiValue {
                 if char.isLowercase {
-                    // Encrypt lowercase letters (a-z)
-                    let newChar = Character(UnicodeScalar(219 - asciiValue)) // 219 = 'a' + 'z'
+                   
+                    let newChar = Character(UnicodeScalar(219 - asciiValue))
                     encryptedText.append(newChar)
                 } else if char.isUppercase {
-                    // Encrypt uppercase letters (A-Z)
-                    let newChar = Character(UnicodeScalar(155 - asciiValue)) // 155 = 'A' + 'Z'
+                   
+                    let newChar = Character(UnicodeScalar(155 - asciiValue))
                     encryptedText.append(newChar)
                 } else {
-                    // Non-alphabetic characters are added as-is
+                   
                     encryptedText.append(char)
                 }
             } else {

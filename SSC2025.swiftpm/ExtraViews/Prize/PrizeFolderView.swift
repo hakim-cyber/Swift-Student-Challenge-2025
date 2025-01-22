@@ -16,7 +16,7 @@ struct PrizeFolderView: View {
             HStack(spacing:20){
                 Button{
                     self.data.openWindow(.certificates)
-                    // open certificates preview view
+
                 }label:{
                     VStack{
                         Image(.certificate)

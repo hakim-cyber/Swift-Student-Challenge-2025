@@ -174,11 +174,7 @@ You can also access this Wi-Fi network by sharing the password from a nearby iPh
         }))
 }
 
-/*
- The Wi-Fi network "ALHN-CF22-5" requires a
- WPA2 password.
- You can also access this Wi-Fi network by sharing the password from a nearby iPhone, iPad, or Mac which has connected to this network and has you in their contacts.
- */
+
 
 struct CheckmarkStyleToggle:View{
     @Binding var value: Bool

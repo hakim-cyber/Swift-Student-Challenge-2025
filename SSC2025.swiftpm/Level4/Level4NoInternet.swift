@@ -36,7 +36,7 @@ offline.
                     .multilineTextAlignment(.center)
                     .fontWeight(.medium)
                 Button(action: {
-                    // Add your retry logic here
+                    
                     tryagain = true
                 }) {
                     Text("Try Again")

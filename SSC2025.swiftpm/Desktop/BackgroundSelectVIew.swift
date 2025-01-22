@@ -27,7 +27,7 @@ struct BackgroundSelectVIew: View {
                                 .clipShape(RoundedRectangle(cornerRadius: size / 11,style: .continuous))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: size / 11,style: .continuous)
-                                        .stroke(isSelected ? Color.accentColor: Color.gray, lineWidth: isSelected ? 4:2) // You can customize the color and width of the stroke
+                                        .stroke(isSelected ? Color.accentColor: Color.gray, lineWidth: isSelected ? 4:2)
                                 )
                             
                             

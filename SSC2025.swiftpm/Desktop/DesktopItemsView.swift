@@ -19,7 +19,7 @@ struct DesktopItemsView: View {
                         if self.data.gameSteps == .level1{
                             self.data.openWindow(.level1)
                         }else{
-                            // show mock keynote
+                           
                             self.data.openWindow(.mockKeynote)
                         }
                     }label:{

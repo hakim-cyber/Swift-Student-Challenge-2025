@@ -60,7 +60,7 @@ struct TrophyView: View {
         let fileURL = documentsURL.appendingPathComponent("\(fileName).scn")
         
         do {
-            // Write the scene to the file
+           
             try scene.write(to: fileURL, options: nil, delegate: nil, progressHandler: nil)
             print("Scene exported to: \(fileURL)")
             return fileURL
@@ -77,7 +77,7 @@ struct TrophyView: View {
 struct TrophySceneView: UIViewRepresentable {
     
     class Coordinator: NSObject {
-        // Add any SceneKit-related properties or methods here
+        
     }
 
     func makeCoordinator() -> Coordinator {
@@ -91,21 +91,21 @@ struct TrophySceneView: UIViewRepresentable {
         sceneView.autoenablesDefaultLighting = true
         sceneView.preferredFramesPerSecond = 60
         
-        // Load the scene
+        
         if let scene = SCNScene(named: "trophy.scn") {
             sceneView.scene = scene
         } else {
             print("Scene not found!")
         }
 
-        // Setup camera and lighting
+        
        
         
         return sceneView
     }
 
     func updateUIView(_ uiView: SCNView, context: Context) {
-        // Update the SceneKit view if needed
+        
     }
 
 }
@@ -120,7 +120,7 @@ struct SceneDocument: FileDocument {
     }
 
     init(configuration: ReadConfiguration) throws {
-        // Initialize from configuration if needed
+        
     }
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {

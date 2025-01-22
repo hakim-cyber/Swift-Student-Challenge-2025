@@ -107,7 +107,7 @@ enum BackgroundImages:String, CaseIterable,Equatable{
     var image:Image{
         switch self {
         case .proBlack:
-            Image(.desktop)//change it
+            Image(.desktop)
         case .sequoia:
             Image(.sequoia)
         case .sonoma:

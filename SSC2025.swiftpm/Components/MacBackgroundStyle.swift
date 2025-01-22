@@ -89,7 +89,7 @@ struct MacBackgroundStyle:ViewModifier{
         .padding()
     }
     func handleDragGesture(value: DragGesture.Value) {
-        // Update phoneOffset dynamically during drag
+        
         self.offset.width = value.translation.width + lastoffset.width
         self.offset.height = value.translation.height + lastoffset.height
 

@@ -19,11 +19,11 @@ struct CertificateBackView: View {
     }
     var back:some View{
         ZStack {
-                    // Background
+                    
             Color.black
                         .edgesIgnoringSafeArea(.all)
 
-                    // Content
+                    
                     VStack(spacing: size / 10) {
                         Image(systemName: "applelogo")
                             .resizable()
@@ -77,11 +77,11 @@ struct CertificateFrontView: View {
 
     var body: some View {
            ZStack {
-               // Background Gradient
+              
                Color.black
                .edgesIgnoringSafeArea(.all)
 
-               // Apple Logo and Text
+               
                VStack(spacing: 20) {
                    Spacer()
                    Image(systemName: "applelogo")

@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ShiningText: View {
     let text: String
-    // For the animation effect
+    
        
        var body: some View {
            Text(text)
-               .font(.headline) // Choose a suitable font size/style
+               .font(.headline)
                .modifier(ShiningEffect())
                .padding(.leading,10)
        }
@@ -28,15 +28,15 @@ struct ShiningEffect:ViewModifier {
         if shine{
             content
                 .foregroundColor(systemColor)
-                .shadow(color: shadowColor, radius: glow ? 10 : 5) // Glow effect
-                .scaleEffect(glow ? 1.2 : 1) // Slightly grow/shrink text
+                .shadow(color: shadowColor, radius: glow ? 10 : 5)
+                .scaleEffect(glow ? 1.2 : 1)
                 .animation(
-                    Animation.easeInOut(duration: 1) // Smooth animation
+                    Animation.easeInOut(duration: 1)
                         .repeatForever(autoreverses: true),
                     value: glow
                 )
                 .onAppear {
-                    glow = true // Start glowing when the view appears
+                    glow = true 
                 }
                 
         }else{
