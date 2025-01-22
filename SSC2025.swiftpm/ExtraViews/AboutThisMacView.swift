@@ -92,7 +92,7 @@ struct AboutThisMacView: View {
 
 #Preview {
     let sizeofScreen = UIScreen.main.bounds
-    AboutThisMacView()
+ return   AboutThisMacView()
         .modifier(MacBackgroundStyle(size: .init(width: sizeofScreen.width / 4, height: sizeofScreen.height / 1.7), close: {
             
         }))

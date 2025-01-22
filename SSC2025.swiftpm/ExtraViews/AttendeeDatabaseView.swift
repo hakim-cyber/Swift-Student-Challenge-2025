@@ -71,7 +71,7 @@ struct AttendeeDatabaseView: View {
 
 #Preview {
     let size = UIScreen.main.bounds.size
-    AttendeeDatabaseView(size: size)
+  return  AttendeeDatabaseView(size: size)
        
     
 }

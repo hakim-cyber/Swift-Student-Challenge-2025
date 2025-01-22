@@ -193,7 +193,7 @@ struct WWDCAnimationView: View {
                         VStack(spacing:0){
                             HStack{
                                 Spacer()
-                                Image(.steve)
+                                Image("steve")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height:300)

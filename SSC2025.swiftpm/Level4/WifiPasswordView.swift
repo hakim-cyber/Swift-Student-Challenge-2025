@@ -168,7 +168,7 @@ You can also access this Wi-Fi network by sharing the password from a nearby iPh
 
 #Preview {
     let size = UIScreen.main.bounds.size
-    WifiPasswordView()
+   return WifiPasswordView()
         .modifier(MacBackgroundStyle(size: .init(width: size.width / 1.8, height: size.height / 2), close: {
             
         }))

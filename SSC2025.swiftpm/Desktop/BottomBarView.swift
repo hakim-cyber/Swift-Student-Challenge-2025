@@ -22,19 +22,19 @@ struct BottomBarView: View {
                         switch window{
                         case .level1:
                             windowButton(window:window){
-                                appIconView(image: Image(.keynote), showCircle: showCircle)
+                                appIconView(image: Image("keynote"), showCircle: showCircle)
                             }
                         case .messages:
                             windowButton(window:window){
-                                appIconView(image: Image(.messagesLogo), showCircle: showCircle)
+                                appIconView(image: Image("messages.logo"), showCircle: showCircle)
                             }
                         case .level2:
                             windowButton(window:window){
-                                appIconView(image: Image(.morseTool), showCircle: showCircle)
+                                appIconView(image: Image("morseTool"), showCircle: showCircle)
                             }
                         case .level3:
                             windowButton(window:window){
-                                appIconView(image: Image(.terminal), showCircle: showCircle)
+                                appIconView(image: Image("terminal"), showCircle: showCircle)
                             }
                         case .level4Browser:
                             windowButton(window:window){
@@ -46,7 +46,7 @@ struct BottomBarView: View {
                             }
                         case .mockKeynote:
                             windowButton(window:window){
-                                appIconView(image: Image(.keynote), showCircle: showCircle)
+                                appIconView(image: Image("keynote"), showCircle: showCircle)
                             }
                         case .mockAttendeeDatabase:
                             windowButton(window:window){
@@ -124,6 +124,6 @@ struct BottomBarView: View {
 
 #Preview {
     let sizeofscreen = UIScreen.main.bounds.size
-    BottomBarView(sizeofscreen: sizeofscreen)
+  return  BottomBarView(sizeofscreen: sizeofscreen)
         .environmentObject(ProjectData())
 }

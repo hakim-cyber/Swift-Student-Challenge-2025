@@ -17,7 +17,7 @@ struct PasswordViewLevel1: View {
        
           
                 VStack(spacing:25){
-                    Image(.keynote)
+                    Image("keynote")
                           .resizable()
                           .scaledToFit()
                           

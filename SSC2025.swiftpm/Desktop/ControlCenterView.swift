@@ -107,17 +107,17 @@ enum BackgroundImages:String, CaseIterable,Equatable{
     var image:Image{
         switch self {
         case .proBlack:
-            Image(.desktop)
+            Image("desktop")
         case .sequoia:
-            Image(.sequoia)
+            Image("sequoia")
         case .sonoma:
-            Image(.sonoma)
+            Image("sonoma")
         case .ventura:
-            Image(.ventura)
+            Image("ventura")
         case .bigsur:
-            Image(.bigSur)
+            Image("bigSur")
         case .mojave:
-            Image(.mojave)
+            Image("mojave")
         }
     }
     

@@ -61,7 +61,7 @@ offline.
 
 #Preview {
     let size = UIScreen.main.bounds.size
-    Level4NoInternet{
+   return Level4NoInternet{
         
     }
         .modifier(MacBackgroundStyle(size: .init(width: size.width / 1.2, height: size.height / 1.2),title:"https://developer.apple.com/wwdc/2025", close: {

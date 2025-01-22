@@ -12,52 +12,51 @@ struct AnimatedButtonMeshGradient: View {
     var image:Image?
     var action:()->Void
     
-   let colors1 =  (0...9).map{_ in
-       [Color.accentColor,Color.red,Color.blue,Color.green,].randomElement()!}
-    let colors2 =  (0...9).map{_ in
-        [Color.yellow,Color.purple,Color.orange].randomElement()!}
-    @State private var animated = false
     
+    @State private var rotation = 0.0
+    let color = Color.cyan
     var body: some View {
         Button{
             action()
         }label: {
-            HStack (spacing:10){
-                if let image {
-                    image
+            ZStack{
+                RoundedRectangle(cornerRadius: 20,style:.continuous)
+                    .stroke(color.opacity(0.3),lineWidth: 3)
+                   
+                
+                RoundedRectangle(cornerRadius: 20,style: .continuous)
+                   
+                    .foregroundStyle(LinearGradient(colors: [color.opacity(0.4),color,color,color.opacity(0.4)], startPoint: .top, endPoint: .bottom))
+                    .rotationEffect(.degrees(rotation))
+                    .mask(RoundedRectangle(cornerRadius: 20,style:.continuous)
+                        .stroke(lineWidth: 3)
+                       
+                        
+                    )
+                HStack (spacing:10){
+                    if let image {
+                        image
+                    }
+                    Text(text)
                 }
-                Text(text)
-            }
                 .font(.headline)
                 .bold()
                 .padding()
                 .padding(.horizontal,30)
                 .foregroundStyle(.white)
-                .background(
-                    RoundedRectangle(cornerRadius: 40)
-                        .stroke(
-                            MeshGradient(width: 3, height: 3, points: [
-                                .init(x: 0, y: 0),.init(x: 0.5, y: 0),.init(x: 1, y: 0),
-                                .init(x: 0, y: 0.5),.init(x: 0.5, y: 0.5),.init(x: 1, y: 0.5),
-                                .init(x: 0, y: 1),.init(x: 0.5, y: 1),.init(x: 1, y: 1)
-                            ], colors: animated ? colors1 : colors2)
-                            
-                            
-                            ,lineWidth: 7)
-                    
-                    
-                )
                 
-                .clipShape(.rect(cornerRadius: 40))
-                .onAppear {
-                    withAnimation(.easeInOut(duration: 2).repeatForever()){
-                        self.animated.toggle()
-                    }
+               
+            }
+            .fixedSize()
+            .onAppear {
+                withAnimation(.linear(duration: 3).repeatForever(autoreverses: false)){
+                    rotation = 360
                 }
+            }
                
             
         }
-        .id(text)
+       
     }
 }
 

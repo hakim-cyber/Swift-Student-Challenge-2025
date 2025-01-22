@@ -247,7 +247,7 @@ struct Level4DecryptView: View {
 
 #Preview {
     let size = UIScreen.main.bounds.size
-    Level4DecryptView(size:.init(width:size.width / 2,height: size.height / 1.3))
+   return Level4DecryptView(size:.init(width:size.width / 2,height: size.height / 1.3))
         .modifier(MacBackgroundStyle(size:.init(width:size.width / 2,height: size.height / 1.3),title: "Level 4"){
            
         })

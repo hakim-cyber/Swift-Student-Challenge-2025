@@ -151,7 +151,7 @@ struct KeynoteView: View {
 
 #Preview {
     let size = UIScreen.main.bounds.size
-    KeynoteView(size: size)
+  return  KeynoteView(size: size)
        
         
 }

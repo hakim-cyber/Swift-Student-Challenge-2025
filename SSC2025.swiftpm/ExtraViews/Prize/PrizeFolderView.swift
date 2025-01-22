@@ -19,7 +19,7 @@ struct PrizeFolderView: View {
 
                 }label:{
                     VStack{
-                        Image(.certificate)
+                        Image("certificate")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 80)
@@ -37,7 +37,7 @@ struct PrizeFolderView: View {
                     self.data.openWindow(.trophy)
                 }label:{
                     VStack{
-                        Image(.trophy)
+                        Image("trophy")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 30)

@@ -149,7 +149,7 @@ Encrypted Morse Code: "..- | ... | . | .-. | ... | ..-. | --- | .-.. | -.. | . |
 """
              let message5 = MessageViewStruct(text: morseCodeText, isIncoming: true)
              let message6 = MessageViewStruct(text: "Tip: Use the Morse Code tool on your desktop. ", isIncoming: true,messageStyle: .tip)
-            let message7 = MessageViewStruct(text: "Morse Code Tool", isIncoming: true,messageStyle:.link(Image(.morseTool),"MorseCode.tool"),onTap: {
+            let message7 = MessageViewStruct(text: "Morse Code Tool", isIncoming: true,messageStyle:.link(Image("morseTool"),"MorseCode.tool"),onTap: {
                   if self.gameSteps == .level2{
                       self.openWindow(.level2)
                   }

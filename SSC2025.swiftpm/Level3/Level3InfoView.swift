@@ -56,7 +56,7 @@ struct Level3InfoView: View {
 
 #Preview {
     let size = UIScreen.main.bounds.size
-    Level3InfoView{
+  return  Level3InfoView{
         
     }
         .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.5)){

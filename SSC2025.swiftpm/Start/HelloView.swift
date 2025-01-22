@@ -22,7 +22,7 @@ struct HelloView: View {
                     HelloAnimation()
                         .frame(width: geo.size.width / 2,height: geo.size.width / 4)
                         .transition(.identity)
-                        .id(geo.size)
+                        .id(geo.size.width)
                     Spacer()
                     Button{
                         next()

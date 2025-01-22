@@ -46,8 +46,9 @@ struct BubbleShape: Shape {
     }
 }
 
-#Preview(){
+
+#Preview(body: { 
     BubbleShape(myMessage: true)
         .frame(width: 200,height: 50)
         .foregroundStyle(.blue)
-}
+})
