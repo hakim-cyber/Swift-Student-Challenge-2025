@@ -17,11 +17,16 @@ struct StartGameView: View {
                     .foregroundColor(.cyan)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("1. Use hints wisely to go faster through Cipher Master and save WWDC!")
+                    Text("1. Use hints to go faster through Cipher Master and save WWDC!")
                         .font(.title2)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
                         .fontWeight(.bold)
+                    Text("2. If you want to see the whole storyline and prizes without playing the full game, use the 'Finish Story' button in the Mac toolbar.")
+                               .font(.title2)
+                               .foregroundColor(.white)
+                               .multilineTextAlignment(.leading)
+                               .fontWeight(.bold)
                 }
                 .padding(.top, 10)
                 
