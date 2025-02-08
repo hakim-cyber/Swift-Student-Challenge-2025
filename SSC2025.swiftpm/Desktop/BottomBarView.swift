@@ -52,6 +52,10 @@ struct BottomBarView: View {
                             windowButton(window:window){
                                 appIconView(image: Image(systemName: "text.document"), showCircle: showCircle)
                             }
+                        case .chiphreInfo:
+                            windowButton(window:window){
+                                appIconView(image: Image("tips"), showCircle: showCircle)
+                            }
                         default:
                             EmptyView()
                             

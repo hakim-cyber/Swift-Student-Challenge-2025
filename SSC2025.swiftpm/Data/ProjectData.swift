@@ -270,4 +270,5 @@ enum WindowType: Int, Equatable ,CaseIterable{
     case certificates
     case trophy
     case backgroundSelect
+    case chiphreInfo
 }

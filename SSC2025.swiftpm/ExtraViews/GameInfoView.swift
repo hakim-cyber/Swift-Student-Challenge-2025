@@ -11,7 +11,8 @@ enum infoViewSteps:String,CaseIterable{
 }
 struct GameInfoView: View {
     let sizeOfScreen:CGSize
-    
+    var swipe:(()->Void)?
+    var close:(()->Void)?
     @State private var selectedStep:infoViewSteps = .Caesar
     var body: some View {
         ZStack{
@@ -88,9 +89,9 @@ struct GameInfoView: View {
             
         }
         .modifier(MacBackgroundStyle(size: .init(width: sizeOfScreen.width / 1.5, height: sizeOfScreen.height / 2), title: "About Chiphres", swipe: {
-            
+            swipe?()
         }, close: {
-            
+            close?()
         }))
     }
     var caesar:some View{

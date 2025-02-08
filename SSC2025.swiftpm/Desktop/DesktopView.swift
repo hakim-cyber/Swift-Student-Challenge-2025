@@ -175,6 +175,17 @@ struct DesktopView: View {
                                     .onTapGesture {
                                         data.bringToFront(.backgroundSelect)
                                     }
+                            case .chiphreInfo:
+                                GameInfoView(sizeOfScreen:size,swipe:{
+                                    self.data.swipeWindow(.chiphreInfo)
+                                },close:{
+                                    self.data.closeWindow(.chiphreInfo)
+                                }
+                                )
+                                .zIndex(Double(data.openWindows.firstIndex(of: .chiphreInfo) ?? 0))
+                                .onTapGesture {
+                                    data.bringToFront(.chiphreInfo)
+                                }
                             default:
                                 EmptyView()
                             }
