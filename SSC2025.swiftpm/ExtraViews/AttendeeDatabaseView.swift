@@ -29,24 +29,7 @@ let attendees = [
     Attendee(name: "Charlie Brown", role: "Product Manager", company: "TechBros", email: "charlie@techbros.com"),
     Attendee(name: "Diana Prince", role: "VP of Engineering", company: "Amazon", email: "diana@amazon.com"),
     Attendee(name: "Harry Potter", role: "Senior Software Engineer", company: "Magic Corp", email: "harry@magiccorp.com"),
-    Attendee(name: "Clark Kent", role: "Journalist", company: "Daily Planet", email: "clark@dailyplanet.com"),
-    
-   
-    Attendee(name: "Zara Green", role: "UX Designer", company: "GreenTech", email: "zara@greentech.com"),
-    Attendee(name: "Oscar Wilde", role: "Author", company: "Literary Works", email: "oscar@literary.com"),
-    Attendee(name: "Ella Fitzgerald", role: "Jazz Musician", company: "MusicWorld", email: "ella@musicworld.com"),
-    Attendee(name: "Vincent van Gogh", role: "Artist", company: "ArtGallery", email: "vincent@artgallery.com"),
-    Attendee(name: "Amelia Earhart", role: "Pilot", company: "Aviation Co", email: "amelia@aviation.com"),
-    Attendee(name: "James Bond", role: "Secret Agent", company: "MI6", email: "james@mi6.com"),
-    Attendee(name: "Sherlock Holmes", role: "Detective", company: "Baker Street", email: "sherlock@bakerstreet.com"),
-    Attendee(name: "Frida Kahlo", role: "Artist", company: "Mexican Art", email: "frida@mexicanart.com"),
-    Attendee(name: "Hercule Poirot", role: "Private Detective", company: "Detective Agency", email: "hercule@agency.com"),
-    Attendee(name: "Winston Churchill", role: "Prime Minister", company: "UK Government", email: "winston@ukgov.com"),
-    Attendee(name: "Mahatma Gandhi", role: "Political Leader", company: "Indian Freedom Movement", email: "mahatma@freedom.com"),
-    Attendee(name: "Marie Curie", role: "Scientist", company: "Physics Lab", email: "marie@physicslab.com"),
-    Attendee(name: "Isaac Newton", role: "Physicist", company: "Science Institute", email: "isaac@scienceinstitute.com"),
-    Attendee(name: "Albert Einstein", role: "Physicist", company: "Quantum Institute", email: "albert@quantuminstitute.com"),
-    Attendee(name: "Leonardo da Vinci", role: "Artist and Engineer", company: "Renaissance Studios", email: "leonardo@renaissance.com")
+    Attendee(name: "Clark Kent", role: "Journalist", company: "Daily Planet", email: "clark@dailyplanet.com")
 ]
 
 struct AttendeeDatabaseView: View {

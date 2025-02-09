@@ -14,7 +14,7 @@ struct WWDCEvent {
 let steveWords:[String] = [
     "Cipher Master… you did it.",
     """
-When hackers tried to derail WWDC 2025, you rose to the challenge.
+When hackers tried to stop WWDC 2025, you saved it.
 You cracked their ciphers, restored the Axicle, and saved the keynote.
 You didn’t just solve puzzles—you saved a global event.
 """,

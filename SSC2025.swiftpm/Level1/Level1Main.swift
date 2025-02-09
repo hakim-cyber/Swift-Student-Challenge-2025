@@ -99,7 +99,7 @@ struct Level1Main: View {
                         })
                         .transition(.opacity)
                     }
-                    hintView(index: 1, hint: "The key to decoding lies in the number '3.' Adjust the slider and watch the encrypted message transform!")
+                    hintView(index: 1, hint: "The key to decoding lies in the number 3")
                     Color.clear.frame(height: 50)
                 }
             }

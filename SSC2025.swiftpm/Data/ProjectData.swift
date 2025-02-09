@@ -13,7 +13,7 @@ class ProjectData: ObservableObject {
     
     
     @Published  var userName: String = ""
-    @Published var startSteps : StartSteps = .intro
+    @Published var startSteps : StartSteps = .helloView
     @Published var gameSteps : GameSteps = .openMessagesApp{
         didSet {
             handleStepsChange()
