@@ -81,6 +81,9 @@ struct MacToolbar: View {
                         }
                         .disabled(true)
                     }
+                    Button("Help"){
+                        self.data.openWindow(.chiphreInfo)
+                    }
                     Spacer()
                     Image(systemName: "battery.100percent")
                         .foregroundStyle(.white, .secondary)

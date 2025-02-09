@@ -31,7 +31,7 @@ class ProjectData: ObservableObject {
     
     @Published var showDock: Bool = true
     var dockWindows: [WindowType]{
-        let alwaysOnDock = [WindowType.messages]
+        let alwaysOnDock = [WindowType.messages,.chiphreInfo]
         let openedWindows = openWindows
         let swipedWindows = self.swipedwindows
         let combinedWindows = openedWindows + swipedWindows + alwaysOnDock
