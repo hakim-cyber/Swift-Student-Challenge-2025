@@ -118,7 +118,7 @@ class ProjectData: ObservableObject {
     }
     func newMessageNotification(){
         if !self.isWindowOpen(.messages){
-            self.notifications.append(NotificationStruct(text: "“Urgent Message from Steve Jobs’ Assistant! Tap here to open Messages.”",type:.message))
+            self.notifications.append(NotificationStruct(text: "“New Message from Steve Jobs’ Assistant! Tap here to open Messages.”",type:.message))
         }
     }
     
