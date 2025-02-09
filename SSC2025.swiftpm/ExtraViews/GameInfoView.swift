@@ -25,32 +25,36 @@ struct GameInfoView: View {
                         VStack(alignment:.leading, spacing:10){
                                            
                                            ForEach(infoViewSteps.allCases,id:\.rawValue) { step in
-                                               ZStack{
-                                                   RoundedRectangle(cornerRadius: 6)
-                                                       .fill(selectedStep == step ? Color.gray.opacity(0.2) :Color.clear)
-                                                       .padding(.horizontal,4)
-                                                       .frame(width: size.width * 0.15)
+                                               
                                                       
                                                        Button {
                                                            
                                                            self.selectedStep = step
                                                        } label: {
-                                                           Text(step.rawValue)
-                                                               .font(.subheadline)
-                                                               .foregroundColor(.white)
-                                                               .padding(.horizontal,5)
-                                                              
-                                                               .bold()
-                                                               .padding(5)
-                                                             
-                                                               .multilineTextAlignment(.leading)
-                                                               .padding(.horizontal,5)
+                                                           ZStack{
+                                                               RoundedRectangle(cornerRadius: 6)
+                                                                   .fill(selectedStep == step ? Color.gray.opacity(0.2) :Color.clear)
+                                                                   .padding(.horizontal,4)
+                                                                   .frame(width: size.width * 0.15)
+                                                               Text(step.rawValue)
+                                                                   .font(.subheadline)
+                                                                   .foregroundColor(.white)
+                                                                   .padding(.horizontal,5)
+                                                               
+                                                                   .bold()
+                                                                   .padding(5)
+                                                               
+                                                                   .multilineTextAlignment(.leading)
+                                                                   .padding(.horizontal,5)
+                                                                   .frame(maxWidth: .infinity,alignment: .leading)
+                                                           }
                                                        }
                                                       
-                                                       .frame(maxWidth: .infinity,alignment: .leading)
+                                                      
+                                                      
                                                        
                                                    
-                                               }
+                                               
                                                
                                              
                                            }
