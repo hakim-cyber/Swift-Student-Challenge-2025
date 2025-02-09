@@ -53,12 +53,14 @@ struct Level1View: View {
             }
         
           
-            .modifier(MacBackgroundStyle(size:.init(width:size.width / 2,height: size.height / 1.5), movable: self.step != .encypt,swipe: {
+            .modifier(MacBackgroundStyle(size:.init(width:size.width / 2,height: size.height / 1.5), movable: self.step != .encypt,showInfo: true,swipe: {
                 
                     data.swipeWindow(.level1)
                 
                     
-            },close:{
+            },openInfo: {
+                self.data.openWindow(.chiphreInfo)
+            }, close:{
                 
                 self.data.closeWindow(.level1)
                 

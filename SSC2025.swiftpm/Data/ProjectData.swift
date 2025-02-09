@@ -116,14 +116,20 @@ class ProjectData: ObservableObject {
             self.processNextMessage()
         }
     }
-    
+    func newMessageNotification(){
+        if !self.isWindowOpen(.messages){
+            self.notifications.append(NotificationStruct(text: "“Urgent Message from Steve Jobs’ Assistant! Tap here to open Messages.”",type:.message))
+        }
+    }
     
     
     func handleStepsChange(){
+        
         switch self.gameSteps {
         case .openMessagesApp:
            print("opened Messages")
         case .level1:
+            newMessageNotification()
             let text1 = "Steve Jobs believed you could save us. Hackers locked the WWDC keynote, attendee list, and Axicle system. It's chaos!"
                 let text2 = "Your mission: Solve their ciphers to recover the files. I’ll guide you along the way."
                 let text3 = "Start with the keynote. Use the Caesar Cipher to decode the hacker’s message and uncover the password!"
@@ -134,6 +140,7 @@ class ProjectData: ObservableObject {
             let message4 = MessageViewStruct(text: "Tip: Find the Keynote icon on your desktop and click to open it. It’s the blue app with a presentation stand!", isIncoming: true,messageStyle: .tip)
             self.addMessagesToQueue([message1,message2,message3,message4])
         case .level2:
+            newMessageNotification()
             let text1 = "Here’s the unlocked keynote. What’s next?"
             let message1 = MessageViewStruct(text: text1, isIncoming: false)
             let message2 = MessageViewStruct(text: "Keynote", isIncoming: false,messageStyle:.file(Image("keynote"),"Keynote Document - 219 KB"),onTap: {
@@ -163,12 +170,14 @@ Encrypted Morse Code: "..- | ... | . | .-. | ... | ..-. | --- | .-.. | -.. | . |
                  
             
         case .usersFolder:
+            newMessageNotification()
             let text1 = """
 Navigate to the Users folder on the desktop and open the attendee file. Use the password you decoded in Level 1: 5FC@WWDC.
 """
             self.messages.append(MessageViewStruct(text: text1, isIncoming: true,messageStyle: .tip))
             
         case .level3:
+            newMessageNotification()
           let message1 = MessageViewStruct(text: "Attendee Database", isIncoming: false,messageStyle:.file(Image(systemName: "text.document.fill"),"Attendee Database.txt - 100 KB"),onTap: {
              
               self.openWindow(.mockAttendeeDatabase)
@@ -183,6 +192,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
                    
             self.addMessagesToQueue([message1, message3, message4, message5])
         case .level4:
+            newMessageNotification()
             let message1 = MessageViewStruct(text: "Axicle is fully restored! 🎉", isIncoming: true, messageStyle: .congratulations)
                 let message2 = MessageViewStruct(text: "You’ve saved WWDC. We’ve sent you a link to watch the live stream.", isIncoming: true, messageStyle: .congratulations)
                    let message3 = MessageViewStruct(
@@ -193,7 +203,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
                    )
                    self.addMessagesToQueue([message1, message2, message3])
         case .noWifi:
-           
+            newMessageNotification()
             let text7 = "After decrypting the password, click the Wi-Fi icon in the toolbar to connect to the network."
             let message1 = MessageViewStruct(text: "The stream won’t load—no internet connection!", isIncoming: false)
                    let message2 = MessageViewStruct(
@@ -208,6 +218,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
             let message4 = MessageViewStruct(text: text7, isIncoming: true,messageStyle: .tip)
             self.addMessagesToQueue([message1, message2, message3,message4])
         case .connectedToWifi:
+            newMessageNotification()
             let message1 = MessageViewStruct(text: "You’re connected to Wi-Fi!", isIncoming: true,messageStyle: .congratulations)
             let message2 = MessageViewStruct(text: "Now, try opening the WWDC live stream link again. It’s time to witness what you’ve worked so hard to save!", isIncoming: true)
             let message3 = MessageViewStruct(text: "WWDC Live Stream", isIncoming: true,messageStyle:.link(Image(systemName: "safari.fill"),"https://developer.apple.com/wwdc/2025"),onTap: {
@@ -219,7 +230,7 @@ Navigate to the Users folder on the desktop and open the attendee file. Use the 
             })
             self.addMessagesToQueue([message1, message2, message3])
         case .watchedAnimation:
-           
+            newMessageNotification()
             let message1 = MessageViewStruct(text: "Amazing job, Cipher Master! You’ve saved WWDC! 🎉", isIncoming: true, messageStyle: .congratulations)
                    let message2 = MessageViewStruct(
                        text: "Head to the Prizes folder on your desktop for your rewards.",

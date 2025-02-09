@@ -18,16 +18,20 @@ struct Level4: View {
                     Level4InfoView {
                         self.level4Data.showDecrypt = true
                     }
-                    .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.5),movable: true,swipe:{
+                    .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.5),movable: true,showInfo: true,swipe:{
                         self.data.swipeWindow(.level4Decoder)
+                    }, openInfo: {
+                        self.data.openWindow(.chiphreInfo)
                     }){
                         self.data.closeWindow(.level4Decoder)
                     })
                 
             }else{
                 Level4DecryptView(size: .init(width:size.width / 2,height: size.height / 1.2))
-                    .modifier(MacBackgroundStyle(size:.init(width:size.width / 2,height: size.height / 1.2),movable: true,swipe:{
+                    .modifier(MacBackgroundStyle(size:.init(width:size.width / 2,height: size.height / 1.2),movable: true,showInfo: true, swipe:{
                         self.data.swipeWindow(.level4Decoder)
+                    },openInfo: {
+                        self.data.openWindow(.chiphreInfo)
                     }){
                         self.data.closeWindow(.level4Decoder)
                     })

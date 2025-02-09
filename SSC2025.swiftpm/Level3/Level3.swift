@@ -21,7 +21,9 @@ struct Level3: View {
                 Level3InfoView {
                     self.data.showedInfoAxicle = true
                 }
-                .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.5), movable: true){
+                .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.5), movable: true,showInfo: true,openInfo: {
+                    self.data.openWindow(.chiphreInfo)
+                }){
                  
                 })
             }

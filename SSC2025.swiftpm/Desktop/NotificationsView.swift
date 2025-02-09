@@ -56,7 +56,7 @@ struct NotificationsView: View {
             
         })
         .onTapGesture(perform: {
-            if self.data.gameSteps == .openMessagesApp{
+            if !self.data.isWindowOpen(.messages){
                 self.data.openWindow(.messages)
              
             }

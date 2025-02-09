@@ -76,7 +76,9 @@ struct Level3MainDecryptView: View {
                 }
                 
             }
-            .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.5),title:"Level 3: Terminal"){
+            .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.5),title:"Level 3: Terminal",showInfo: true,openInfo: {
+                self.data.openWindow(.chiphreInfo)
+            }){
                
                     self.data.closeWindow(.level3)
                 self.data.showDock = true

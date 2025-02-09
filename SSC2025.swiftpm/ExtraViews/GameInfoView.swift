@@ -14,6 +14,7 @@ struct GameInfoView: View {
     var swipe:(()->Void)?
     var close:(()->Void)?
     @State private var selectedStep:infoViewSteps = .Caesar
+    @EnvironmentObject var data:ProjectData
     var body: some View {
         ZStack{
             GeometryReader{ geo in
@@ -92,11 +93,30 @@ struct GameInfoView: View {
           
             
         }
-        .modifier(MacBackgroundStyle(size: .init(width: sizeOfScreen.width / 1.5, height: sizeOfScreen.height / 2), title: "About Chiphres", swipe: {
+        .onChange(of: data.gameSteps, { oldValue, newValue in
+            openHint()
+        })
+        .onAppear{
+            openHint()
+        }
+        .modifier(MacBackgroundStyle(size: .init(width: sizeOfScreen.width / 1.5, height: sizeOfScreen.height / 2), title: "About Chiphres",movable: true, swipe: {
             swipe?()
         }, close: {
             close?()
         }))
+    }
+    func openHint(){
+        switch self.data.gameSteps{
+        case .level2,.usersFolder:
+            self.selectedStep = .MorseCode
+        case .level3:
+            self.selectedStep = .Atbash
+        case .level4,.noWifi:
+            self.selectedStep = .Vigenere
+        default:
+            
+            self.selectedStep = selectedStep
+        }
     }
     var caesar:some View{
         VStack(alignment: .leading, spacing: 12) {

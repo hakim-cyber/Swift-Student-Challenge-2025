@@ -11,12 +11,15 @@ struct MacBackgroundStyle:ViewModifier{
     let size:CGSize
     var title:String = ""
     var movable:Bool = false
+    var showInfo:Bool = false
     var alignment:Alignment = .center
     @State private var offset:CGSize = .zero
     @State private var lastoffset:CGSize = .zero
     
     var swipe:(()->Void)?
+    var openInfo:(()->Void)?
     var close:()->Void
+    
     
     func body(content: Content) -> some View {
         let gesture = movable ? DragGesture()
@@ -66,8 +69,18 @@ struct MacBackgroundStyle:ViewModifier{
                         .padding(.leading)
                 }
                 Spacer()
+                if showInfo{
+                    Button{
+                        self.openInfo?()
+                    }label: {
+                        Image(systemName: "lightbulb.max.fill")
+                            .foregroundStyle(.yellow)
+                            
+                    }
+                   
+                }
             }
-            .padding([.leading,.top,.bottom])
+            .padding()
             .frame(width:size.width)
             .background(.ultraThickMaterial)
             
