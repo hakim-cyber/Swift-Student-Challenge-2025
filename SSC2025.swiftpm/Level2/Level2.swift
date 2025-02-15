@@ -24,7 +24,7 @@ struct Level2: View {
                     self.finished()
                 }
             })
-            .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.2),title:"Level 2", movable: true,showInfo: true,swipe:{
+            .modifier(MacBackgroundStyle(size:.init(width:size.width / 1.5,height: size.height / 1.4),title:"Level 2", movable: level2Data.solved,showInfo: true,swipe:{
                
                     data.swipeWindow(.level2)
                 
