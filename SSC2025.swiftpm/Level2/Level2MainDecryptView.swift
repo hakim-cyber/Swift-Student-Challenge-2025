@@ -29,78 +29,86 @@ struct Level2MainDecryptView: View {
     @Binding var showInstructions:Bool
     
     var body: some View {
-        VStack(spacing: 35) {
-           
-            Spacer()
-            VStack(spacing: 35) {
-                if !showInstructions{
-                    HStack{
-                        VStack(alignment: .leading, spacing: 20){
-                            Text("Decrypt The Morse Code")
-                                .fontWeight(.black)
-                                .fontDesign(.monospaced)
-                                .font(.system(size:20))
-                            HStack{
-                                Image("robot")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 100)
-                                    .padding(.leading,10)
-                                VStack(alignment: .leading){
-                                    morseCodeText()
-                                    Spacer()
-                                    HStack(spacing: 20){
-                                        HStack(alignment:.lastTextBaseline, spacing: 0){
-                                            Image(systemName: "lightbulb.max.fill")
-                                                .font(.system(size: 18))
-                                                .foregroundStyle(.yellow)
-                                            Text("Hints")
-                                                .bold()
-                                                .font(.system(size: 18))
-                                        }
-                                        Toggle("", isOn: $showHint)
-                                            .labelsHidden()
-                                            .tint(.yellow)
-                                        
+        ScrollView{
+            VStack(spacing: 25) {
+                
+                
+                VStack(spacing: 25) {
+                    if !showInstructions{
+                        HStack{
+                            VStack(alignment: .leading, spacing: 20){
+                                Text("Decrypt The Morse Code")
+                                    .fontWeight(.black)
+                                    .fontDesign(.monospaced)
+                                    .font(.system(size:20))
+                                HStack{
+                                    Image("robot")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 100)
+                                    
+                                    VStack(alignment: .leading){
+                                        morseCodeText()
                                         Spacer()
+                                        HStack(spacing: 20){
+                                            HStack(alignment:.lastTextBaseline, spacing: 0){
+                                                Image(systemName: "lightbulb.max.fill")
+                                                    .font(.system(size: 18))
+                                                    .foregroundStyle(.yellow)
+                                                Text("Hints")
+                                                    .bold()
+                                                    .font(.system(size: 18))
+                                            }
+                                            Toggle("", isOn: $showHint)
+                                                .labelsHidden()
+                                                .tint(.yellow)
+                                            
+                                            Spacer()
+                                        }
+                                        
                                     }
+                                    
                                     
                                 }
                                 
-                                
                             }
+                            Spacer()
                         }
-                        Spacer()
+                        VStack(spacing:20){
+                            rectangleWithProgress()
+                            DropArrea()
+                            
+                            
+                            rectangleWithProgress()
+                            
+                        }
+                        VStack(spacing:20){
+                            DragArea()
+                            Text("Press and hold to pick up, then move to drag")
+                                .bold()
+                                .foregroundStyle(.secondary)
+                        }
+                    }else{
+                        instructionsView()
                     }
-                    VStack(spacing:30){
-                        rectangleWithProgress()
-                        DropArrea()
-                        
-                        
-                        rectangleWithProgress()
-                        
-                    }
-                    DragArea()
-                }else{
-                    instructionsView()
+                    
                 }
-                
+                .frame(maxWidth: .infinity)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(40)
+                Spacer()
             }
-            .frame(maxWidth: .infinity)
-            .fixedSize(horizontal: false, vertical: true)
-            .padding(40)
-            Spacer()
-        }
-        .padding()
-        .frame(width: size.width,height: size.height)
-        .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .center)
-        .offset(x:animateWrongText ? 10 : 0)
-        .onAppear{
-            if rows.isEmpty{
-                characters = characters.shuffled()
-                shuffledRows = generateGrid()
-               
-                rows = generateCorrectGrid()
+            .padding()
+            .frame(width: size.width,height: size.height)
+            .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .center)
+            .offset(x:animateWrongText ? 10 : 0)
+            .onAppear{
+                if rows.isEmpty{
+                    characters = characters.shuffled()
+                    shuffledRows = generateGrid()
+                    
+                    rows = generateCorrectGrid()
+                }
             }
         }
         

@@ -96,6 +96,7 @@ struct Level3MainDecryptView: View {
             if self.level3Data.messages.isEmpty{
                 self.level3Data.tips.removeAll()
                 self.level3Data.tips.append(Tip(message: "Type  start",copy: "start"))
+                self.level3Data.tips.append(Tip(message: "Tap to copy"))
                 self.focusedField = true
             }
            
